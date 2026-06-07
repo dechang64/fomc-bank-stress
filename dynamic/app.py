@@ -416,9 +416,12 @@ elif page == "🎲 Uncertainty Channel":
     with col1:
         fomc_date = st.text_input("FOMC Date", value="2013-06-19", key="uc_date")
         stance = st.selectbox("Stance", ["Dovish", "Hawkish", "Neutral"], key="uc_stance")
+        lm_stance = st.selectbox("LM% Classification", ["Dovish", "Hawkish", "Neutral"], index=0, key="uc_lm")
+        llm_stance = st.selectbox("LLM Classification", ["Dovish", "Hawkish", "Neutral"], index=1, key="uc_llm")
     with col2:
         inner_conf = st.slider("Inner Confidence", 0.1, 1.0, 0.55, 0.05, key="uc_conf")
         car_estimate = st.number_input("CAR Point Estimate (pp)", value=-1.0, key="uc_car")
+        no_stmt = st.checkbox("No statement released (pre-2002)", key="uc_nostmt")
 
     if st.button("Assess Uncertainty", key="uc_btn"):
         assessment = mods["uncertainty"].assess(
@@ -427,6 +430,9 @@ elif page == "🎲 Uncertainty Channel":
             inner_confidence=inner_conf,
             car_point_estimate=car_estimate,
             base_correlation=0.86 if "ZLB" in fomc_date else 0.68,
+            lm_stance=lm_stance,
+            llm_stance=llm_stance,
+            no_statement=no_stmt,
         )
 
         col1, col2, col3, col4 = st.columns(4)
@@ -435,20 +441,22 @@ elif page == "🎲 Uncertainty Channel":
         with col2:
             st.metric("Uncertainty Level", assessment.uncertainty_level.value)
         with col3:
-            st.metric("Disagreement Index", f"{assessment.disagreement_index:.0f}/100")
+            st.metric("Stance Distance", f"{assessment.stance_distance}")
         with col4:
             st.metric("Volatility Multiplier", f"×{assessment.volatility_multiplier:.2f}")
 
-        col1, col2, col3 = st.columns(3)
+        col1, col2, col3, col4 = st.columns(4)
         with col1:
-            st.metric("ρ Adjustment", f"+{assessment.correlation_adjustment:.3f}")
+            st.metric("LM% Stance", assessment.lm_stance)
         with col2:
-            st.metric("Spread Widening", f"{assessment.spread_widening_bps:.0f}bps")
+            st.metric("LLM Stance", assessment.llm_stance)
         with col3:
-            st.metric("Capital Buffer Surcharge", f"+{assessment.capital_buffer_surcharge_pct:.1f}%")
+            st.metric("ρ Adjustment", f"+{assessment.correlation_adjustment:.3f}")
+        with col4:
+            st.metric("Capital Buffer", f"+{assessment.capital_buffer_surcharge_pct:.1f}%")
 
-        st.markdown(f"**CAR**: {assessment.car_point_estimate:+.2f}pp, "
-                    f"90% CI: [{assessment.car_ci_5:.2f}, {assessment.car_ci_95:.2f}]pp")
+        st.markdown(f"**CAR**: {assessment.car_point_estimate:+.4f}pp, "
+                    f"90% CI: [{assessment.car_ci_lower:.2f}, {assessment.car_ci_upper:.2f}]pp")
 
         if assessment.regime_transition_alert:
             st.error("⚠️ REGIME TRANSITION ALERT — Confidence drop exceeds threshold!")

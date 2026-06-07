@@ -1,0 +1,16 @@
+{
+  "n_scored": 150,
+  "ambiguity_stats": {
+    "mean": 2.78,
+    "std": 1.2254022760934606,
+    "min": 0.0,
+    "max": 9.0,
+    "median": 3.0
+  },
+  "findings": {
+    "P1_ambiguity_vs_abs_car": "r=-0.161, p=0.1217",
+    "P1b_ambiguity_vs_car_variance": "r=-0.161, p=0.0487",
+    "P3_taper_tantrum": "ambiguity=7.0, ZLB z-score=4.58, anomalous=True"
+  },
+  "comparison_with_ic": "Ambiguity score (0-10) has MUCH better variance than Inner Confidence (0.875-0.959). This is the preferred measurement tool for the uncertainty channel."
+}
