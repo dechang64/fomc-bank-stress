@@ -1,0 +1,427 @@
+"""
+FOMC Dynamic Stress Test Dashboard
+===================================
+Streamlit app for regime-conditional bank stress testing.
+Based on Xu & Zhang (2026) — FOMC Communication and Bank Stress.
+
+Run: streamlit run app.py
+"""
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import yaml
+import os
+import sys
+
+# Add dynamic/ to path
+sys.path.insert(0, os.path.dirname(__file__))
+
+from regime_detector import RegimeDetector
+from scenario_generator import ScenarioGenerator
+from htm_risk_module import HTMRiskModule
+from shock_compensation import ShockCompensationEngine
+from correlation_engine import CorrelationEngine
+from cross_border import CrossBorderModule
+from reverse_stress_test import ReverseStressTest
+from fomc_parser import FOMCParser
+
+# ── Page Config ──
+st.set_page_config(
+    page_title="FOMC Dynamic Stress Test",
+    page_icon="🏦",
+    layout="wide",
+)
+
+# ── Load Config ──
+@st.cache_resource
+def load_config():
+    with open(os.path.join(os.path.dirname(__file__), "config.yaml")) as f:
+        return yaml.safe_load(f)
+
+config = load_config()
+
+# ── Initialize Modules ──
+@st.cache_resource
+def init_modules():
+    return {
+        "detector": RegimeDetector(),
+        "generator": ScenarioGenerator(),
+        "htm": HTMRiskModule(),
+        "shock": ShockCompensationEngine(),
+        "corr": CorrelationEngine(),
+        "cross": CrossBorderModule(),
+        "reverse": ReverseStressTest(),
+        "parser": FOMCParser(),
+    }
+
+mods = init_modules()
+
+# ── Sidebar ──
+st.sidebar.title("🏦 FOMC Stress Test")
+st.sidebar.caption("Based on Xu & Zhang (2026)")
+
+page = st.sidebar.radio("Navigate", [
+    "🏠 Dashboard",
+    "📊 Regime Detector",
+    "⚡ Scenario Generator",
+    "💰 HTM Risk Module",
+    "⚖️ Shock vs Compensation",
+    "🔗 Correlation Engine",
+    "🌏 Cross-Border",
+    "🔄 Reverse Stress Test",
+    "📝 FOMC Parser",
+])
+
+# ── Dashboard ──
+if page == "🏠 Dashboard":
+    st.title("FOMC Dynamic Stress Test System")
+    st.markdown("**Regime-conditional bank stress testing based on FOMC communication**")
+    st.markdown("---")
+
+    # Regime overview
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric("ZLB Periods", "2", "2008-2015, 2020-2022")
+    with col2:
+        st.metric("FastHike Period", "1", "2022-2023")
+    with col3:
+        st.metric("Total FOMC Events", "216", "1994-2025")
+
+    st.markdown("### Key Findings")
+
+    findings = pd.DataFrame({
+        "Hypothesis": ["H1: Full Sample", "H2: Regime Shift", "H6: Japan",
+                        "H8: NIM Channel", "H9: HTM Channel"],
+        "Finding": [
+            "Dovish = lower bank returns (−0.89pp)",
+            "Pre-DFAST >> DFAST era (22× ratio)",
+            "Japan 57% stronger than US",
+            "ZLB compensation: Dovish×ZLB×NIM = +0.68",
+            "FastHike devastation: t = −8.16",
+        ],
+        "t-stat": ["−2.13**", "22×", "−1.40 vs −0.89", "+0.68***", "−8.16***"],
+    })
+    st.dataframe(findings, use_container_width=True, hide_index=True)
+
+    st.markdown("### Regime-Conditional Signal Map")
+    st.markdown("""
+    | Regime | Dovish Signal | Hawkish Signal |
+    |--------|--------------|----------------|
+    | **ZLB** | 🟢 Liquidity (+0.18pp) | 🔴 Distress (−1.00pp) |
+    | **Normalization** | 🔴 Distress (−0.82pp) | 🟢 Accommodation (+0.30pp) |
+    | **FastHike** | ⚠️ Mixed | 🔴 HTM devastation (−0.093/ratio) |
+    """)
+
+# ── Regime Detector ──
+elif page == "📊 Regime Detector":
+    st.title("📊 Regime Detector")
+    st.markdown("Classify any date into a monetary policy regime")
+
+    test_date = st.text_input("Enter date (YYYY-MM-DD)", value="2022-06-15")
+    lm_pct = st.slider("LM% (positive word %)", 0.0, 8.0, 2.5, 0.1)
+
+    if st.button("Detect Regime"):
+        info = mods["detector"].detect_fomc(test_date, lm_pct)
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Regime", info["regime"])
+        with col2:
+            st.metric("Stance", info["stance"])
+        with col3:
+            st.metric("Signal Meaning", info["signal_meaning"])
+
+        # Correlation
+        corr = mods["detector"].get_regime_correlation(info["regime"], True)
+        st.metric("Bank Inter-Correlation (FOMC day)", f"{corr:.2f}")
+
+# ── Scenario Generator ──
+elif page == "⚡ Scenario Generator":
+    st.title("⚡ Scenario Generator")
+    st.markdown("Generate regime-conditional stress test scenarios")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        regime = st.selectbox("Regime", ["Normalization", "ZLB", "FastHike"])
+        stance = st.selectbox("FOMC Stance", ["Dovish", "Hawkish"])
+    with col2:
+        rate_shock = st.slider("Rate Shock (bps)", 0, 1000, 500, 50)
+        nim_ratio = st.slider("NIM Ratio", 0.01, 0.06, 0.03, 0.005)
+        htm_ratio = st.slider("HTM Ratio", 0.0, 0.40, 0.15, 0.01)
+        cre_intensity = st.slider("CRE Intensity", 0.0, 0.50, 0.25, 0.05)
+
+    if st.button("Generate Scenario"):
+        scenario = mods["generator"].generate(
+            regime, stance, rate_shock, nim_ratio, htm_ratio, cre_intensity
+        )
+
+        st.markdown(f"### Scenario: {scenario.name}")
+        st.markdown(f"*{scenario.description}*")
+
+        metrics = pd.DataFrame({
+            "Parameter": ["Dovish-Hawkish Spread", "NIM Shock", "HTM Unrealized Loss",
+                          "CRE Spread Widening", "Bank Correlation", "CoVaR Multiplier",
+                          "P(Loss)"],
+            "Value": [f"{scenario.dovish_hawkish_spread_pp:+.2f}pp",
+                      f"{scenario.nim_shock_pp:+.3f}pp",
+                      f"{scenario.htm_unrealized_loss_pp:+.3f}pp",
+                      f"{scenario.cre_spread_widening_bps:+.1f}bps",
+                      f"{scenario.bank_correlation:.2f}",
+                      f"{scenario.covar_multiplier:.2f}×",
+                      f"{scenario.p_loss_pct:.1f}%"],
+        })
+        st.dataframe(metrics, use_container_width=True, hide_index=True)
+
+    # All scenarios comparison
+    st.markdown("---")
+    st.markdown("### All Standard Scenarios")
+    all_scenarios = mods["generator"].generate_all_scenarios(nim_ratio, htm_ratio, cre_intensity)
+    rows = []
+    for s in all_scenarios:
+        rows.append({
+            "Scenario": s.name,
+            "Regime": s.regime,
+            "Stance": s.stance,
+            "Spread (pp)": s.dovish_hawkish_spread_pp,
+            "NIM (pp)": s.nim_shock_pp,
+            "HTM (pp)": s.htm_unrealized_loss_pp,
+            "Correlation": s.bank_correlation,
+            "P(Loss)%": s.p_loss_pct,
+        })
+    st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+# ── HTM Risk Module ──
+elif page == "💰 HTM Risk Module":
+    st.title("💰 HTM Risk Module")
+    st.markdown("Assess unrealized losses on Held-to-Maturity securities")
+    st.markdown("*Based on H9: FastHike×HTM = −0.093 (t = −8.16)*")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("#### Bank Parameters")
+        ticker = st.text_input("Ticker", "SVB_PROXY")
+        htm_sec = st.number_input("HTM Securities ($B)", value=91.0)
+        total_assets = st.number_input("Total Assets ($B)", value=212.0)
+        afs_sec = st.number_input("AFS Securities ($B)", value=27.0)
+    with col2:
+        tier1 = st.number_input("Tier 1 Capital ($B)", value=16.0)
+        duration = st.slider("Effective Duration (years)", 1.0, 10.0, 6.0, 0.5)
+        rate_shock = st.slider("Rate Shock (bps)", 100, 1000, 500, 50)
+
+    if st.button("Assess HTM Risk"):
+        assessment = mods["htm"].assess_bank(
+            ticker=ticker,
+            htm_securities=htm_sec * 1e9,
+            total_assets=total_assets * 1e9,
+            afs_securities=afs_sec * 1e9,
+            tier1_capital=tier1 * 1e9,
+            duration=duration,
+            rate_shock_bps=rate_shock,
+        )
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("HTM Unrealized Loss", f"${assessment.htm_unrealized_loss/1e9:.1f}B")
+        with col2:
+            st.metric("Capital Erosion", f"{assessment.capital_erosion_pct:.1f}%")
+        with col3:
+            color = "🔴" if assessment.risk_level in ["Critical", "High"] else "🟡" if assessment.risk_level == "Medium" else "🟢"
+            st.metric("Risk Level", f"{color} {assessment.risk_level}")
+
+        if assessment.breach_threshold:
+            st.error(f"⚠️ HTM losses exceed {100 if assessment.risk_level=='Critical' else 50}% of Tier 1 capital!")
+
+    # Sensitivity analysis
+    st.markdown("---")
+    st.markdown("### HTM Ratio Sensitivity (Panel Regression)")
+    htm_ratios = np.arange(0.02, 0.40, 0.02)
+    car_impacts = [mods["htm"].panel_regression_impact(r, 500) for r in htm_ratios]
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=htm_ratios * 100, y=car_impacts,
+        mode='lines+markers',
+        name='CAR Impact (FastHike, 500bp)',
+        line=dict(color='#e74c3c', width=2),
+    ))
+    fig.update_layout(
+        title="CAR Impact vs HTM Ratio (FastHike × 500bp shock)",
+        xaxis_title="HTM Ratio (%)",
+        yaxis_title="CAR Impact (pp)",
+        template="plotly_white",
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+# ── Shock vs Compensation ──
+elif page == "⚖️ Shock vs Compensation":
+    st.title("⚖️ Shock vs Compensation")
+    st.markdown("Dual-sided stress assessment: losses AND compensation effects")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        regime = st.selectbox("Regime", ["ZLB", "FastHike", "Normalization"], key="sc_regime")
+        stance = st.selectbox("Stance", ["Dovish", "Hawkish"], key="sc_stance")
+    with col2:
+        nim_ratio = st.slider("NIM Ratio", 0.01, 0.06, 0.035, 0.005, key="sc_nim")
+        htm_ratio = st.slider("HTM Ratio", 0.0, 0.40, 0.20, 0.01, key="sc_htm")
+        cre_intensity = st.slider("CRE Intensity", 0.0, 0.50, 0.35, 0.05, key="sc_cre")
+
+    if st.button("Compute Shock-Compensation"):
+        profile = mods["shock"].assess(
+            ticker="BANK", regime=regime, stance=stance,
+            nim_ratio=nim_ratio, htm_ratio=htm_ratio, cre_intensity=cre_intensity,
+        )
+
+        # Bar chart
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            name="Shock",
+            x=["NIM Compression", "HTM Unrealized Loss", "CRE Deterioration"],
+            y=[profile.nim_compression_pp, profile.htm_unrealized_loss_pp, profile.cre_deterioration_pp],
+            marker_color='#e74c3c',
+        ))
+        fig.add_trace(go.Bar(
+            name="Compensation",
+            x=["QE Trading Income", "Deposit Franchise", "Capital Rebuilding"],
+            y=[profile.qe_trading_income_pp, profile.deposit_franchise_value_pp, profile.capital_rebuilding_pp],
+            marker_color='#2ecc71',
+        ))
+        fig.update_layout(
+            title=f"Shock vs Compensation: {regime}/{stance}",
+            barmode='group',
+            template="plotly_white",
+        )
+        st.plotly_chart(fig, use_container_width=True)
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Total Shock", f"{profile.total_shock_pp:.2f}pp")
+        with col2:
+            st.metric("Total Compensation", f"{profile.total_compensation_pp:.2f}pp")
+        with col3:
+            st.metric("Net Effect", f"{profile.net_effect_pp:+.2f}pp", delta=profile.net_direction)
+
+# ── Correlation Engine ──
+elif page == "🔗 Correlation Engine":
+    st.title("🔗 Correlation Engine")
+    st.markdown("Regime-conditional bank inter-correlation")
+    st.markdown("*ZLB FOMC ρ=0.86 vs Non-ZLB FOMC ρ=0.68*")
+
+    banks = ["JPM", "BAC", "C", "WFC", "GS", "MS", "SCHW", "BK"]
+
+    col1, col2 = st.columns(2)
+    with col1:
+        regime = st.selectbox("Regime", ["ZLB", "Normalization", "FastHike"], key="ce_regime")
+    with col2:
+        is_fomc = st.checkbox("FOMC Day", value=True)
+
+    cm = mods["corr"].generate(banks, regime, is_fomc)
+
+    # Heatmap
+    fig = go.Figure(data=go.Heatmap(
+        z=cm.matrix,
+        x=banks, y=banks,
+        colorscale="RdBu_r",
+        zmin=0.3, zmax=1.0,
+        text=np.round(cm.matrix, 2),
+        texttemplate="%{text:.2f}",
+    ))
+    fig.update_layout(
+        title=f"Correlation Matrix: {regime} {'FOMC' if is_fomc else 'Non-FOMC'} (base ρ={cm.base_correlation:.2f})",
+        template="plotly_white",
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.metric("Systemic Risk Index", f"{cm.systemic_risk_index():.1f}/100")
+
+# ── Cross-Border ──
+elif page == "🌏 Cross-Border":
+    st.title("🌏 Cross-Border Transmission")
+    st.markdown("International spillover effects (Japan 57% more sensitive)")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        regime = st.selectbox("Regime", ["ZLB", "FastHike", "Normalization"], key="cb_regime")
+        stance = st.selectbox("Stance", ["Dovish", "Hawkish"], key="cb_stance")
+    with col2:
+        us_car = st.number_input("US CAR (pp)", value=-1.0)
+        usdjpy_move = st.number_input("USDJPY Move (%)", value=2.5)
+
+    impact = mods["cross"].assess(regime, stance, us_car, usdjpy_move)
+    score = mods["cross"].systemicty_score(regime, stance)
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("US CAR", f"{impact.us_car_pp:+.2f}pp")
+    with col2:
+        st.metric("Japan CAR", f"{impact.jp_car_pp:+.2f}pp", delta=f"×{impact.japan_multiplier}")
+    with col3:
+        st.metric("Systemicity Score", f"{score:.0f}/100")
+
+# ── Reverse Stress Test ──
+elif page == "🔄 Reverse Stress Test":
+    st.title("🔄 Reverse Stress Test")
+    st.markdown("Bootstrap-based reverse stress testing")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        regime = st.selectbox("Regime", ["ZLB", "FastHike", "Normalization"], key="rst_regime")
+        stance = st.selectbox("Stance", ["Dovish", "Hawkish"], key="rst_stance")
+    with col2:
+        years = st.slider("Duration (years)", 1, 10, 7)
+        n_sims = st.selectbox("Simulations", [1000, 5000, 10000], index=2)
+
+    if st.button("Run Reverse Stress Test"):
+        with st.spinner("Running bootstrap simulation..."):
+            result = mods["reverse"].simulate(regime, stance, years, n_sims)
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("E[cum CAR]", f"{result.mean_cum_car_pct:+.1f}%")
+        with col2:
+            st.metric("CVaR(5%)", f"{result.cvar_95_pct:.1f}%")
+        with col3:
+            st.metric("P(Loss)", f"{result.p_loss_pct:.1f}%")
+        with col4:
+            st.metric("P(Loss>10%)", f"{result.p_loss_gt10_pct:.1f}%")
+
+        if result.most_vulnerable != "N/A":
+            st.warning(f"⚠️ Most vulnerable: {result.most_vulnerable} (P(loss)={result.most_vulnerable_p_loss:.1f}%)")
+
+# ── FOMC Parser ──
+elif page == "📝 FOMC Parser":
+    st.title("📝 FOMC Statement Parser")
+    st.markdown("Extract LM% sentiment from FOMC statements in real-time")
+
+    statement = st.text_area("Paste FOMC Statement", height=200, value="""The Federal Reserve decided to raise the target range for the federal funds rate by 75 basis points to 1.50-1.75 percent. Inflation remains elevated, reflecting supply and demand imbalances related to the pandemic, higher energy prices, and broader price pressures. The Committee is strongly committed to returning inflation to its 2 percent objective.""")
+
+    if st.button("Parse Statement"):
+        result = mods["parser"].parse(statement, "Today")
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("LM%", f"{result.lm_pct:.2f}")
+        with col2:
+            st.metric("Stance", result.stance)
+        with col3:
+            st.metric("Positive Words", f"{result.n_positive}/{result.n_total}")
+
+        col1, col2 = st.columns(2)
+        with col1:
+            st.metric("Hawkish Words", result.hawkish_count)
+        with col2:
+            st.metric("Dovish Words", result.dovish_count)
+
+        if result.key_phrases:
+            st.markdown("### Key Phrases")
+            for phrase in result.key_phrases:
+                st.markdown(f"- {phrase}")
+
+# ── Footer ──
+st.sidebar.markdown("---")
+st.sidebar.markdown("Xu & Zhang (2026)")
+st.sidebar.markdown("*FOMC Communication and Bank Stress*")
+st.sidebar.markdown("[GitHub](https://github.com/dechang64/fomc-bank-stress)")

@@ -1,0 +1,96 @@
+# FOMC Dynamic Stress Test System — Configuration
+# All parameters calibrated from Xu & Zhang (2026) v7.2
+
+regime:
+  zlb_start: "2008-12-16"
+  zlb_end: "2015-12-16"
+  zlb2_start: "2020-03-15"
+  zlb2_end: "2022-03-16"
+  fasthike_start: "2022-03-16"
+  fasthike_end: "2023-07-26"
+
+fomc_signals:
+  dovish_spread:
+    non_zlb: -0.82
+    zlb: +0.18
+  hawkish_spread:
+    non_zlb: +0.30
+    zlb: -1.00
+
+channels:
+  nim:
+    dovish_nim: -0.3732
+    dovish_zlb_nim: +0.6765
+    fasthike_nim: -0.9661
+  cre:
+    dovish_cre: -0.0162
+    dovish_zlb_cre: +0.2469
+    fasthike_cre: +0.6826
+  htm:
+    fasthike_htm: -0.0933
+    fasthike_htm_securities: -0.053
+    fasthike_afs: +0.0003
+
+correlation:
+  non_zlb_fomc: 0.68
+  zlb_fomc: 0.86
+  non_zlb_nonfomc: 0.55
+  zlb_nonfomc: 0.75
+
+covar:
+  non_zlb_baseline: 1.0
+  zlb_amplification: 2.09
+
+reverse_stress:
+  zlb_dovish_7yr:
+    mean_cum_car: +17.8
+    p_loss: 16.2
+  zlb_hawkish_7yr:
+    mean_cum_car: -22.5
+    p_loss: 88.5
+    p_loss_gt10: 75.2
+  most_vulnerable: "Citi (P(loss)=57.9%)"
+
+cross_border:
+  japan_multiplier: 1.57
+  dollar_funding_channel: true
+  exchange_rate_channel: true
+
+banks:
+  us:
+    - JPM
+    - BAC
+    - C
+    - WFC
+    - GS
+    - MS
+    - USB
+    - PNC
+    - TFC
+    - COF
+    - BK
+    - STT
+    - SCHW
+    - MTB
+    - KEY
+    - CFG
+    - FITB
+    - RF
+    - BMO
+    - RY
+    - TD
+    - BCS
+    - NTRS
+    - ALLY
+  jp:
+    - MUFG
+    - Mizuho
+    - SMFG
+    - SMTH
+    - Resona
+    - Chiba
+    - Gunma
+    - Suruga
+    - Yamaguchi
+    - Concordia
+    - Hokuhoku
