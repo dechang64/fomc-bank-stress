@@ -453,7 +453,7 @@ elif page == "🎲 Uncertainty Channel":
         with col3:
             st.metric("ρ Adjustment", f"+{assessment.correlation_adjustment:.3f}")
         with col4:
-            st.metric("Capital Buffer", f"+{assessment.capital_buffer_surcharge_pct:.1f}%")
+            st.metric("Capital Buffer", f"+{assessment.capital_buffer_surcharge:.1f}%")
 
         st.markdown(f"**CAR**: {assessment.car_point_estimate:+.4f}pp, "
                     f"90% CI: [{assessment.car_ci_lower:.2f}, {assessment.car_ci_upper:.2f}]pp")
