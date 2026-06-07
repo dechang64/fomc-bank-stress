@@ -1,0 +1,96 @@
+{
+  "three_document_analysis": {
+    "data_coverage": {
+      "statement_llm": 146,
+      "minutes_llm": 201,
+      "transcript_llm": 161,
+      "all_three": 102
+    },
+    "agreement_rates": {
+      "statement_minutes": 0.307,
+      "statement_transcript": 0.592,
+      "minutes_transcript": 0.556,
+      "all_three": 0.333
+    },
+    "lm_correlations": {
+      "statement_minutes": 0.331,
+      "statement_transcript": -0.026,
+      "minutes_transcript": 0.269
+    },
+    "divergence_signal": {
+      "full_sample": {
+        "r": -0.157,
+        "p": 0.061,
+        "n": 142
+      },
+      "normal_periods": {
+        "r": -0.187,
+        "p": 0.034,
+        "n": 128
+      },
+      "inflation_era": {
+        "r": -0.336,
+        "p": 0.034,
+        "n": 40
+      },
+      "high_confidence": {
+        "r": -0.26,
+        "p": 0.029,
+        "n": 71
+      }
+    },
+    "regression": {
+      "divergence_coef_pp": -0.472,
+      "divergence_p": 0.088,
+      "inflation_era_coef_pp": -1.041,
+      "inflation_era_p": 0.026,
+      "normal_coef_pp": -0.511,
+      "normal_p": 0.056
+    },
+    "direction": {
+      "consistent_car_pp": 0.174,
+      "divergent_car_pp": -0.247,
+      "spread_pp": 0.421,
+      "consistent_win_rate": 0.6,
+      "divergent_win_rate": 0.48
+    },
+    "bank_specific": {
+      "MTB": {
+        "r": -0.236,
+        "p": 0.005
+      },
+      "SCHW": {
+        "r": -0.202,
+        "p": 0.016
+      },
+      "WFC": {
+        "r": -0.186,
+        "p": 0.026
+      },
+      "BK": {
+        "r": -0.17,
+        "p": 0.043
+      },
+      "BAC": {
+        "r": -0.149,
+        "p": 0.077
+      },
+      "USB": {
+        "r": -0.141,
+        "p": 0.094
+      }
+    },
+    "transcript_validation": {
+      "sides_with_statement": 0.47,
+      "sides_with_minutes": 0.4,
+      "differs_from_both": 0.14,
+      "car_when_sides_with_stmt_pp": -0.23,
+      "car_when_sides_with_min_pp": -0.442
+    },
+    "word_counts": {
+      "statement": 800,
+      "minutes": 6430,
+      "transcript": 29990
+    }
+  }
+}
