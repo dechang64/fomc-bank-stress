@@ -1,0 +1,25 @@
+{
+  "n_statements_scored": 146,
+  "n_missing": 70,
+  "inner_confidence": {
+    "mean": 0.9217970847713115,
+    "std": 0.016235541856790107,
+    "min": 0.8755351513123656,
+    "max": 0.9590908566648512
+  },
+  "lm_llm_disagreement_rate": 0.7876712328767124,
+  "llm_classification_dist": {
+    "Dovish": 91,
+    "Hawkish": 41,
+    "Neutral": 14
+  },
+  "key_findings": {
+    "P1_ic_vs_car_variance": "r=0.100, p=0.230 (NS)",
+    "P1_stated_conf_vs_car_variance": "r=-0.356, p<0.0001 (SIGNIFICANT)",
+    "P2_disagreement_rate": "78.8%",
+    "P3_taper_tantrum": "IC=0.933, not anomalous (ZLB mean=0.921)",
+    "P4_normal_regime_dd_vs_abs_car": "r=-0.299, p=0.016 (SIGNIFICANT)",
+    "zlb_higher_variance": "coef=0.000274, p=0.039 (SIGNIFICANT)"
+  },
+  "measurement_note": "qwen-plus Inner Confidence has compressed range (0.875-0.959, \u03c3=0.016). Stated confidence even more compressed (0.95-1.00). Need logprobs from a less confident model or use entropy-based measures from multiple LLM calls."
+}
