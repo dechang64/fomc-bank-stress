@@ -51,7 +51,22 @@ fomc-bank-stress/
 ├── results/                  # Pre-computed analysis results
 │   ├── stress_era_results.json
 │   ├── jp_h1_results.json
-│   └── jp_h1_by_bank.json
+│   ├── jp_h1_by_bank.json
+│   └── uncertainty_channel_results.json
+├── dynamic/                  # 🆕 Dynamic Stress Test System
+│   ├── app.py                # Streamlit dashboard (10 pages)
+│   ├── regime_detector.py    # ZLB/Normalization/FastHike classification
+│   ├── scenario_generator.py # Regime-conditional scenario generation
+│   ├── htm_risk_module.py    # HTM unrealized loss assessment (H9)
+│   ├── shock_compensation.py # Dual shock-compensation engine (H8)
+│   ├── correlation_engine.py # Dynamic bank inter-correlation
+│   ├── cross_border.py       # International spillover (Japan ×1.57)
+│   ├── reverse_stress_test.py# Bootstrap reverse stress testing
+│   ├── fomc_parser.py        # Real-time LM% extraction
+│   ├── uncertainty_channel.py# Delta disagreement channel
+│   ├── score_fomc_inner_confidence.py  # LLM Inner Confidence scoring
+│   ├── config.yaml           # All parameters calibrated from v7.2
+│   └── requirements.txt
 └── docs/                     # Cover letters, supplementary
 ```
 
@@ -79,6 +94,44 @@ fomc-bank-stress/
 | FastHike×HTM | | | | −0.093*** |
 | FastHike×NIM | | | | −0.966*** |
 | N | 2,489 | 2,489 | 2,489 | 2,489 |
+
+## Dynamic Stress Test System
+
+A regime-conditional, FOMC-driven dynamic stress testing framework. All parameters calibrated from the paper's empirical estimates.
+
+```bash
+cd dynamic
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+### Modules
+
+| Module | Function | Key Parameter |
+|---|---|---|
+| `regime_detector` | ZLB/Normalization/FastHike | 6 regime boundary dates |
+| `scenario_generator` | Regime-conditional scenarios | 9 auto-generated scenarios |
+| `htm_risk_module` | HTM unrealized loss (H9) | SVB: $27.3B loss, 170.6% capital erosion |
+| `shock_compensation` | Dual shock-compensation (H8) | ZLB/Dovish net +1.14pp |
+| `correlation_engine` | Dynamic ρ | ZLB FOMC ρ=0.86 vs Normal ρ=0.68 |
+| `cross_border` | International spillover | Japan ×1.57 |
+| `reverse_stress_test` | Bootstrap reverse stress | ZLB/Hawkish P(loss)=88.5% |
+| `fomc_parser` | Real-time LM% extraction | Loughran-McDonald dictionary |
+| `uncertainty_channel` | Delta disagreement | Inner Confidence → capital buffer |
+
+### Uncertainty Channel — Empirical Validation
+
+146 FOMC statements scored with qwen-plus Inner Confidence:
+
+| Prediction | Result | Status |
+|---|---|---|
+| Low IC → higher CAR variance | r=0.100, p=0.230 | ❌ NS |
+| Stated confidence → CAR variance | r=−0.356, p<0.0001 | ✅ Significant |
+| Normal regime: DD vs \|CAR\| | r=−0.299, p=0.016 | ✅ Significant |
+| ZLB → higher dispersion | coef=0.000274, p=0.039 | ✅ Significant |
+| Taper Tantrum IC anomalous | IC=0.933 (ZLB mean=0.921) | ❌ Not anomalous |
+
+**Measurement note**: qwen-plus logprobs are highly concentrated (IC range 0.875–0.959, σ=0.016). Future work should use multi-model disagreement or temperature-sampled entropy for better signal.
 
 ## Replication
 
