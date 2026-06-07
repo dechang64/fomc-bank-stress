@@ -1,0 +1,50 @@
+{
+  "n_statements_scored": 194,
+  "n_total_fomc": 216,
+  "coverage": "89.8%",
+  "n_missing_pre2002": 22,
+  "text_source": "FOMC post-meeting statements (not minutes)",
+  "measurement_approaches_tested": {
+    "1_single_model_logprobs": {
+      "method": "qwen-plus Inner Confidence from logprobs",
+      "range": "0.875-0.959",
+      "std": 0.016,
+      "verdict": "Too compressed — insufficient variance for meaningful analysis"
+    },
+    "2_multi_model_disagreement": {
+      "method": "qwen-plus/turbo/max classification disagreement",
+      "verdict": "All Qwen models agree (>99%) — same training data, same biases"
+    },
+    "3_temperature_sampling": {
+      "method": "qwen-plus at T=0.7, 5 runs per statement",
+      "verdict": "100% agreement even at high temperature — model is overconfident"
+    },
+    "4_lm_llm_stance_distance": {
+      "method": "|LM% stance - LLM stance| where Dovish=-1, Neutral=0, Hawkish=1",
+      "distribution": {
+        "0": 31,
+        "1": 96,
+        "2": 19
+      },
+      "verdict": "BEST MEASURE — meaningful variance, theoretically grounded"
+    },
+    "5_composite_uncertainty_index": {
+      "method": "Weighted: lm_llm_disagree(0.3) + no_rate_change(0.25) - lm_distance_z(0.2) - stmt_length_z(0.25)",
+      "verdict": "Useful but dominated by binary disagreement component"
+    }
+  },
+  "key_findings": {
+    "F1_stance_distance_car": "coef=-0.0091, p=0.005 *** — disagreement → worse bank returns",
+    "F2_stance_distance_variance": "coef=+0.000095, p=0.058 * — disagreement → more dispersion",
+    "F3_sd_zlb_variance": "coef=+0.000332, p=0.051 * — ZLB amplifies disagreement effect",
+    "F4_sd_dovish_zlb_variance": "coef=-0.000364, p=0.093 * — ZLB+Dovish disagreement reduces dispersion (QE clarity)",
+    "F5_stated_conf_variance": "r=-0.356, p<0.0001 *** — LLM confidence predicts cross-sectional dispersion",
+    "F6_zlb_higher_variance": "coef=0.000274, p=0.039 ** — ZLB → more bank return dispersion"
+  },
+  "upgrade_path": {
+    "short_term": "Use LM-LLM stance distance as primary uncertainty measure (already works)",
+    "medium_term": "Add FOMC minutes text for richer semantic analysis (available for all 216 meetings)",
+    "long_term": "Use truly different model families (GPT-4, Claude, Llama) for multi-model disagreement",
+    "alternative": "Use market-implied uncertainty (VIX, Fed Funds futures) as external validation"
+  }
+}
