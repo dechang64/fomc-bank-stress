@@ -55,7 +55,7 @@ class HTMRiskAssessment:
 class HTMRiskModule:
     """Assess HTM unrealized loss risk for a portfolio of banks."""
 
-    # Empirical coefficients from Xu & Zhang (2026)
+    # Empirical coefficients from Zhang (2026)
     FASTHIKE_HTM_COEFF = -0.0933   # t = -8.16
     FASTHIKE_AFS_COEFF = +0.0003   # t = +2.87
 

@@ -1,6 +1,6 @@
 """
 Uncertainty Channel — Delta disagreement as a systemic risk amplifier.
-Based on Xu & Zhang (2026) + Inner Confidence framework (Chen et al. 2025, NBER #34965).
+Based on Zhang (2026) + Inner Confidence framework (Chen et al. 2025, NBER #34965).
 
 Core insight: When market participants disagree about FOMC signal meaning,
 uncertainty itself becomes an independent stress transmission channel.

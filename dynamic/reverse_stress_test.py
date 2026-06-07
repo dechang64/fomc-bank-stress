@@ -1,6 +1,6 @@
 """
 Reverse Stress Test — Bootstrap-based reverse stress testing.
-Based on §7 of Xu & Zhang (2026): CVaR and scenario analysis.
+Based on §7 of Zhang (2026): CVaR and scenario analysis.
 """
 import numpy as np
 from dataclasses import dataclass

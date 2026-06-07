@@ -2,7 +2,7 @@
 
 **US, Japan, and the Pre/Post-2008 Regime Shift**
 
-Dechang Xu & Eileen Zhang
+Eileen Zhang
 
 *Submitted to: 2026 Federal Reserve Stress Testing Research Conference (Boston, Nov 5-6)*
 
@@ -171,9 +171,9 @@ python code/07_ffiec_dump.py
 ## Citation
 
 ```bibtex
-@unpublished{xu2026fomc,
+@unpublished{zhang2026fomc,
   title={FOMC Communication and Bank Stress: US, Japan, and the Pre/Post-2008 Regime Shift},
-  author={Xu, Dechang and Zhang, Eileen},
+  author={Zhang, Eileen},
   year={2026},
   note={Submitted to 2026 Federal Reserve Stress Testing Research Conference}
 }

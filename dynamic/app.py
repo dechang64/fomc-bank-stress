@@ -2,7 +2,7 @@
 FOMC Dynamic Stress Test Dashboard
 ===================================
 Streamlit app for regime-conditional bank stress testing.
-Based on Xu & Zhang (2026) — FOMC Communication and Bank Stress.
+Based on Zhang (2026) — FOMC Communication and Bank Stress.
 
 Run: streamlit run app.py
 """
@@ -62,7 +62,7 @@ mods = init_modules()
 
 # ── Sidebar ──
 st.sidebar.title("🏦 FOMC Stress Test")
-st.sidebar.caption("Based on Xu & Zhang (2026)")
+st.sidebar.caption("Based on Zhang (2026)")
 
 page = st.sidebar.radio("Navigate", [
     "🏠 Dashboard",
@@ -561,6 +561,6 @@ elif page == "📝 FOMC Parser":
 
 # ── Footer ──
 st.sidebar.markdown("---")
-st.sidebar.markdown("Xu & Zhang (2026)")
+st.sidebar.markdown("Zhang (2026)")
 st.sidebar.markdown("*FOMC Communication and Bank Stress*")
 st.sidebar.markdown("[GitHub](https://github.com/dechang64/fomc-bank-stress)")
