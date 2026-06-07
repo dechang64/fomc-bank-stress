@@ -9,6 +9,7 @@ from correlation_engine import CorrelationEngine
 from cross_border import CrossBorderModule
 from reverse_stress_test import ReverseStressTest
 from fomc_parser import FOMCParser
+from uncertainty_channel import UncertaintyChannel, EmpiricalPredictions
 
 __all__ = [
     "RegimeDetector",
@@ -19,4 +20,6 @@ __all__ = [
     "CrossBorderModule",
     "ReverseStressTest",
     "FOMCParser",
+    "UncertaintyChannel",
+    "EmpiricalPredictions",
 ]

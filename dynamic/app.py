@@ -26,6 +26,7 @@ from correlation_engine import CorrelationEngine
 from cross_border import CrossBorderModule
 from reverse_stress_test import ReverseStressTest
 from fomc_parser import FOMCParser
+from uncertainty_channel import UncertaintyChannel
 
 # ── Page Config ──
 st.set_page_config(
@@ -54,6 +55,7 @@ def init_modules():
         "cross": CrossBorderModule(),
         "reverse": ReverseStressTest(),
         "parser": FOMCParser(),
+        "uncertainty": UncertaintyChannel(),
     }
 
 mods = init_modules()
@@ -71,6 +73,7 @@ page = st.sidebar.radio("Navigate", [
     "🔗 Correlation Engine",
     "🌏 Cross-Border",
     "🔄 Reverse Stress Test",
+    "🎲 Uncertainty Channel",
     "📝 FOMC Parser",
 ])
 
@@ -390,6 +393,134 @@ elif page == "🔄 Reverse Stress Test":
 
         if result.most_vulnerable != "N/A":
             st.warning(f"⚠️ Most vulnerable: {result.most_vulnerable} (P(loss)={result.most_vulnerable_p_loss:.1f}%)")
+
+# ── Uncertainty Channel ──
+elif page == "🎲 Uncertainty Channel":
+    st.title("🎲 Uncertainty Channel")
+    st.markdown("**Delta Disagreement as a Systemic Risk Amplifier**")
+    st.markdown("*Based on Inner Confidence (Chen et al. 2025, NBER #34965)*")
+
+    st.markdown("""
+    When market participants **disagree** about FOMC signal meaning, uncertainty itself
+    becomes an independent stress transmission channel:
+    - High disagreement → High volatility → Trading desk losses
+    - High disagreement → Banks can't hedge → Forced selling
+    - High disagreement → Funding market freeze → Cross-border amplification
+    """)
+
+    st.markdown("---")
+
+    # Single event assessment
+    st.markdown("### Single Event Assessment")
+    col1, col2 = st.columns(2)
+    with col1:
+        fomc_date = st.text_input("FOMC Date", value="2013-06-19", key="uc_date")
+        stance = st.selectbox("Stance", ["Dovish", "Hawkish", "Neutral"], key="uc_stance")
+    with col2:
+        inner_conf = st.slider("Inner Confidence", 0.1, 1.0, 0.55, 0.05, key="uc_conf")
+        car_estimate = st.number_input("CAR Point Estimate (pp)", value=-1.0, key="uc_car")
+
+    if st.button("Assess Uncertainty", key="uc_btn"):
+        assessment = mods["uncertainty"].assess(
+            fomc_date=fomc_date,
+            stance=stance,
+            inner_confidence=inner_conf,
+            car_point_estimate=car_estimate,
+            base_correlation=0.86 if "ZLB" in fomc_date else 0.68,
+        )
+
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Inner Confidence", f"{assessment.inner_confidence:.2f}")
+        with col2:
+            st.metric("Uncertainty Level", assessment.uncertainty_level.value)
+        with col3:
+            st.metric("Disagreement Index", f"{assessment.disagreement_index:.0f}/100")
+        with col4:
+            st.metric("Volatility Multiplier", f"×{assessment.volatility_multiplier:.2f}")
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("ρ Adjustment", f"+{assessment.correlation_adjustment:.3f}")
+        with col2:
+            st.metric("Spread Widening", f"{assessment.spread_widening_bps:.0f}bps")
+        with col3:
+            st.metric("Capital Buffer Surcharge", f"+{assessment.capital_buffer_surcharge_pct:.1f}%")
+
+        st.markdown(f"**CAR**: {assessment.car_point_estimate:+.2f}pp, "
+                    f"90% CI: [{assessment.car_ci_5:.2f}, {assessment.car_ci_95:.2f}]pp")
+
+        if assessment.regime_transition_alert:
+            st.error("⚠️ REGIME TRANSITION ALERT — Confidence drop exceeds threshold!")
+
+    # Regime transition detection
+    st.markdown("---")
+    st.markdown("### Regime Transition Detection")
+    st.markdown("Track Inner Confidence across consecutive FOMC meetings")
+
+    conf_values = st.text_input(
+        "Confidence sequence (comma-separated, oldest first)",
+        value="0.90, 0.78, 0.42, 0.65, 0.88, 0.91",
+        key="uc_seq"
+    )
+
+    if st.button("Detect Transitions", key="uc_trans_btn"):
+        confs = [float(x.strip()) for x in conf_values.split(",")]
+
+        rows = []
+        for i in range(len(confs)):
+            if i == 0:
+                rows.append({
+                    "Meeting": f"t+{i}",
+                    "Confidence": f"{confs[i]:.2f}",
+                    "Drop": "N/A",
+                    "P(Transition)": "N/A",
+                    "Alert": "—",
+                })
+            else:
+                alert, prob = mods["uncertainty"].detect_regime_transition(confs[i], confs[i-1])
+                drop = confs[i-1] - confs[i]
+                rows.append({
+                    "Meeting": f"t+{i}",
+                    "Confidence": f"{confs[i]:.2f}",
+                    "Drop": f"{drop:.3f}",
+                    "P(Transition)": f"{prob:.1%}",
+                    "Alert": "⚠️ ALERT" if alert else "OK",
+                })
+        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+    # Uncertainty-adjusted correlation
+    st.markdown("---")
+    st.markdown("### Uncertainty-Adjusted Correlation")
+    st.markdown("Higher disagreement → Higher bank inter-correlation → More systemic risk")
+
+    base_rho = st.slider("Base Correlation (ρ)", 0.50, 0.95, 0.68, 0.01, key="uc_rho")
+    conf_slider = st.slider("Inner Confidence", 0.1, 1.0, 0.55, 0.05, key="uc_rho_conf")
+
+    adj_rho = mods["uncertainty"].uncertainty_adjusted_correlation(base_rho, conf_slider)
+    st.metric("Adjusted ρ", f"{adj_rho:.3f}", delta=f"+{adj_rho - base_rho:.3f}")
+
+    # Comparison table
+    st.markdown("---")
+    st.markdown("### Uncertainty-Adjusted Stress Test Comparison")
+
+    scenarios = [
+        {"name": "ZLB/Dovish (Clear)", "regime": "ZLB", "stance": "Dovish",
+         "inner_confidence": 0.92, "car_point_estimate": 0.18, "base_correlation": 0.86},
+        {"name": "ZLB/Dovish (Unclear)", "regime": "ZLB", "stance": "Dovish",
+         "inner_confidence": 0.55, "car_point_estimate": 0.18, "base_correlation": 0.86},
+        {"name": "ZLB/Hawkish (Clear)", "regime": "ZLB", "stance": "Hawkish",
+         "inner_confidence": 0.88, "car_point_estimate": -1.00, "base_correlation": 0.86},
+        {"name": "ZLB/Hawkish (Unclear)", "regime": "ZLB", "stance": "Hawkish",
+         "inner_confidence": 0.45, "car_point_estimate": -1.00, "base_correlation": 0.86},
+        {"name": "FastHike/Hawkish (Clear)", "regime": "FastHike", "stance": "Hawkish",
+         "inner_confidence": 0.90, "car_point_estimate": -1.50, "base_correlation": 0.78},
+        {"name": "FastHike/Hawkish (Unclear)", "regime": "FastHike", "stance": "Hawkish",
+         "inner_confidence": 0.50, "car_point_estimate": -1.50, "base_correlation": 0.78},
+    ]
+
+    df = mods["uncertainty"].stress_test_with_uncertainty(scenarios)
+    st.dataframe(df, use_container_width=True, hide_index=True)
 
 # ── FOMC Parser ──
 elif page == "📝 FOMC Parser":
