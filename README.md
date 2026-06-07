@@ -2,7 +2,7 @@
 
 **US, Japan, and the Pre/Post-2008 Regime Shift**
 
-Dechang Xu (Soochow University) & Eileen Zhang (Xi'an Jiaotong-Liverpool University)
+Dechang Xu & Eileen Zhang
 
 *Submitted to: 2026 Federal Reserve Stress Testing Research Conference (Boston, Nov 5-6)*
 
