@@ -217,7 +217,7 @@ Ratio (Pre/Post) & 22x  & 23x  \\
 \end{tabular}
 \end{table}
 
-Note: FFIEC 031 Call Report data adds 6 US BHCs to the WRDS Y-9C sample.
+Table~\ref{tab:ffiec} confirms that extending the cross-section from N=14 to N=20 US BHCs preserves the qualitative findings for both H3 (CRE exposure) and H5 (capital building), ruling out the concern that the Y-9C sample is a non-random subset.
 
 \begin{table}[H]
 \centering
@@ -234,7 +234,7 @@ H5: Capital-building spread & -0.483pp (t=-3.08) & Sign preserved \\
 \end{tabular}
 \end{table}
 
-Note: CAR[0,+1] spread = Dovish mean - Hawkish mean. High/Low split at median.
+Table~\ref{tab:cross_section} reports the cross-sectional results for CRE intensity and capital building. High-CRE banks show a significantly larger dovish-hawkish spread ($-0.483$pp, $t = -3.17$) than low-CRE banks ($-0.250$pp, $t = -1.68$), supporting H3. Capital-building banks show a spread of $-0.483$pp vs $-0.197$pp for capital-depleting banks, supporting H5.
 
 \begin{table}[H]
 \centering
@@ -253,7 +253,7 @@ Tier1 YoY & Building & 1,241 & -0.483pp & -3.08 & 0.002 \\
 \end{tabular}
 \end{table}
 
-Note: CAR[0,+1] in percentage points. Dov = Dovish, Hawk = Hawkish. N = number of Dovish/Hawkish meetings.
+Table~\ref{tab:full_sample} reports the full-sample dovish-hawkish bank-return spread for both the US and Japan. Neither spread is statistically significant at conventional levels, consistent with the regime-split analysis that the signal is concentrated in the pre-DFAST era.
 
 \begin{table}[H]
 \centering
@@ -269,6 +269,8 @@ Japan (11 banks) & 71/76 & -0.059\% & +0.319\% & -0.378pp & -1.11 & 0.270 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+Table~\ref{tab:channel} reports the channel decomposition regressions. Columns (1)--(3) test the NIM and CRE channels during ZLB periods; Column (4) adds the FastHike period and the HTM channel.
 
 \begin{table}[H]
 \centering
@@ -306,12 +308,16 @@ $R^2$ & 0.029 & 0.023 & 0.030 & 0.045 \\
 
 Note: t-statistics in parentheses based on bank-clustered standard errors. *** p<0.01, ** p<0.05, * p<0.1. NIM = Net Interest Income / Total Assets. CRE = CRE loan intensity. HTM = Held-to-Maturity securities / Total Assets. ZLB = Zero Lower Bound period. FastHike = Rapid rate hike period (2022-03-16 to 2023-07-26).
 
+Figure~\ref{fig:cre} visualizes the CRE sensitivity channel: during ZLB periods, high-CRE banks benefit more from dovish FOMC signals, as low interest rates increase the present value of CRE loan cash flows.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/fig_cre_vulnerability.png}
 \caption{Commercial Real Estate Vulnerability Across Monetary Policy Regimes. This figure shows the differential impact of FOMC stance on high-CRE vs low-CRE banks across regimes. The CRE sensitivity channel operates primarily during ZLB periods (Dovish\,$\times$\,ZLB\,$\times$\,CRE = +0.25, p = 0.013).}
 \label{fig:cre}
 \end{figure}
+
+Table~\ref{tab:htm_afs} decomposes the securities portfolio into HTM and AFS components during the rapid rate hike period. The stark contrast between FastHike$\times$HTM ($-0.053$, $t = -6.26$) and FastHike$\times$AFS ($+0.0003$, $t = 2.87$) reveals a fundamental accounting asymmetry.
 
 \begin{table}[H]
 \centering
@@ -340,6 +346,8 @@ $R^2$ & 0.009 & 0.008 & 0.009 & 0.012 \\
 \end{table}
 
 Note: t-statistics in parentheses based on bank-clustered standard errors. *** p<0.01, ** p<0.05, * p<0.1. HTM = Held-to-Maturity securities / Total Assets. AFS = Available-for-Sale securities / Total Assets.
+
+Figure~\ref{fig:htm_afs} illustrates the divergence between HTM and AFS securities portfolios over time. During the 2022--2023 rapid rate hike period, HTM portfolios accumulate unrealized losses that remain invisible under current accounting rules, while AFS losses are marked to market through AOCI.
 
 \begin{figure}[H]
 \centering
