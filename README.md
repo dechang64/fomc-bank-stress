@@ -12,10 +12,11 @@ Dechang Xu (Soochow University) & Eileen Zhang (Xi'an Jiaotong-Liverpool Univers
 
 We test whether FOMC statement language functions as a real-time indicator of bank stress, using 216 FOMC meetings (1994–2025) matched to daily returns of 24 US DFAST banks and 11 Japanese banks. The central finding is a sharp pre/post-2008 regime shift in BOTH the US and Japan: the dovish-hawkish bank-return spread is significantly negative pre-DFAST (US: −0.89pp, Japan: −1.40pp) but collapses to insignificance in the DFAST era.
 
-Channel decomposition reveals three independent transmission mechanisms:
+Channel decomposition reveals four independent transmission mechanisms:
 - **NIM Compression Channel** (H8): ZLB periods, high-NIM banks benefit from dovish FOMC (β=+0.68, p<0.001)
 - **HTM Unrealized Loss Channel** (H9): FastHike periods, high-HTM banks suffer (β=−0.093, t=−8.16, p<0.001) — the strongest coefficient in the entire study
 - **CRE Sensitivity Channel**: Operates during ZLB but dominated by HTM during FastHike
+- **Uncertainty Channel** (H10): When LM% and LLM disagree on FOMC signal direction, stance distance predicts worse bank CAR (coef=−0.0091, p=0.005) and higher dispersion (p=0.058), with ZLB amplification (p=0.051)
 
 The HTM vs AFS comparison constitutes a natural quasi-experiment: identical cash flows, different accounting treatment, starkly different risk profiles (FastHike×HTM t=−6.26 vs FastHike×AFS t=+2.87).
 
@@ -24,7 +25,7 @@ The HTM vs AFS comparison constitutes a natural quasi-experiment: identical cash
 ```
 fomc-bank-stress/
 ├── paper/                    # Latest paper + figures
-│   ├── FOMC_BankStress_v72.docx
+│   ├── FOMC_BankStress_v80.docx
 │   └── figures/              # 8 figures (Figure 1-7 + supplementary)
 ├── code/                     # Analysis scripts (chronological)
 │   ├── 00_run_all.py         # Master runner
@@ -83,6 +84,7 @@ fomc-bank-stress/
 | H7 (FFIEC Extension) | Robust to N=20 | Sign preserved |
 | H8 (NIM Channel) | ZLB compensation effect | Dovish×ZLB×NIM = +0.68*** |
 | H9 (HTM Channel) | FastHike devastation | FastHike×HTM = −0.093 (t=−8.16)*** |
+| H10 (Uncertainty) | Stance distance → worse CAR | coef=−0.0091, p=0.005*** |
 
 ## Channel Decomposition (v7.0+)
 
@@ -117,21 +119,21 @@ streamlit run app.py
 | `cross_border` | International spillover | Japan ×1.57 |
 | `reverse_stress_test` | Bootstrap reverse stress | ZLB/Hawkish P(loss)=88.5% |
 | `fomc_parser` | Real-time LM% extraction | Loughran-McDonald dictionary |
-| `uncertainty_channel` | Delta disagreement | Inner Confidence → capital buffer |
+| `uncertainty_channel` | Delta disagreement | Stance distance → capital buffer surcharge |
 
-### Uncertainty Channel — Empirical Validation
+### Uncertainty Channel — Empirical Validation (v8.0)
 
-146 FOMC statements scored with qwen-plus Inner Confidence:
+194 FOMC statements scored with qwen-plus + LM% stance distance:
 
 | Prediction | Result | Status |
 |---|---|---|
-| Low IC → higher CAR variance | r=0.100, p=0.230 | ❌ NS |
-| Stated confidence → CAR variance | r=−0.356, p<0.0001 | ✅ Significant |
-| Normal regime: DD vs \|CAR\| | r=−0.299, p=0.016 | ✅ Significant |
-| ZLB → higher dispersion | coef=0.000274, p=0.039 | ✅ Significant |
-| Taper Tantrum IC anomalous | IC=0.933 (ZLB mean=0.921) | ❌ Not anomalous |
+| Stance distance → worse CAR | coef=−0.0091, p=0.005 | ✅ *** |
+| Stance distance → more dispersion | coef=+0.000095, p=0.058 | ✅ * |
+| ZLB amplifies disagreement | coef=+0.000332, p=0.051 | ✅ * |
+| Stated confidence → CAR variance | r=−0.356, p<0.0001 | ✅ *** |
+| Taper Tantrum: highest ambiguity | z-score=4.58 in ZLB subsample | ✅ Anomalous |
 
-**Measurement note**: qwen-plus logprobs are highly concentrated (IC range 0.875–0.959, σ=0.016). Future work should use multi-model disagreement or temperature-sampled entropy for better signal.
+**Measurement**: LM-LLM stance distance (|LM% stance − LLM stance|) outperforms single-model logprobs (σ=0.016 too compressed), multi-model disagreement (>99% agreement within Qwen family), and temperature sampling (100% agreement).
 
 ## Replication
 
@@ -164,6 +166,7 @@ python code/07_ffiec_dump.py
 | v7.0 | 2026-06-06 | Channel decomposition: NIM, CRE, HTM |
 | v7.1 | 2026-06-07 | H4 quintile, Japan Table 7, Lu & Wu reference |
 | v7.2 | 2026-06-07 | Table/Figure renumbering, figures embedded, Japan data corrected |
+| v8.0 | 2026-06-07 | Uncertainty Channel (H10): stance distance, 194 statements, Tables 8-9 |
 
 ## Citation
 
