@@ -1,0 +1,151 @@
+{
+  "table1": {
+    "LM%": {
+      "N": 216,
+      "Mean": 3.63,
+      "Std": 2.24,
+      "Min": -1.57,
+      "Max": 16.76
+    },
+    "Nikkei 225 CAR": {
+      "N": 216,
+      "Mean": 0.26,
+      "Std": 2.51,
+      "Min": -8.0,
+      "Max": 16.14
+    },
+    "S&P 500 CAR": {
+      "N": 216,
+      "Mean": 0.24,
+      "Std": 1.66,
+      "Min": -5.48,
+      "Max": 8.42
+    },
+    "Gold CAR": {
+      "N": 184,
+      "Mean": 0.13,
+      "Std": 1.72,
+      "Min": -6.8,
+      "Max": 7.28
+    },
+    "VIX Change": {
+      "N": 216,
+      "Mean": -1.37,
+      "Std": 10.04,
+      "Min": -26.96,
+      "Max": 74.04
+    },
+    "USD/JPY Change": {
+      "N": 209,
+      "Mean": 0.03,
+      "Std": 0.95,
+      "Min": -3.54,
+      "Max": 4.68
+    }
+  },
+  "table2": {
+    "N": 212,
+    "R2_pct": 4.99,
+    "F": 11.03,
+    "p": 0.0011,
+    "slope": 44.8394,
+    "interpretation": "LM% nearly orthogonal to rate surprise; language captures distinct dimension"
+  },
+  "table3": {
+    "Intercept": {
+      "coef": -0.0802,
+      "t": -0.09,
+      "p": 0.9297
+    },
+    "LM%": {
+      "coef": 0.0873,
+      "t": 0.34,
+      "p": 0.7346
+    },
+    "High_VIX": {
+      "coef": 0.8327,
+      "t": 0.83,
+      "p": 0.405
+    },
+    "LM%\u00d7High_VIX": {
+      "coef": -0.2119,
+      "t": -0.78,
+      "p": 0.4337
+    },
+    "Rate_surprise": {
+      "coef": -12.6465,
+      "t": -0.62,
+      "p": 0.5363
+    }
+  },
+  "table4": {
+    "Low VIX": {
+      "N": 100,
+      "Dovish_mean": 0.208,
+      "Hawkish_mean": 0.243,
+      "Spread_pp": -0.035,
+      "beta_LM": 0.0868,
+      "t_beta": 0.47,
+      "p_beta": 0.642
+    },
+    "High VIX": {
+      "N": 105,
+      "Dovish_mean": 0.888,
+      "Hawkish_mean": -0.075,
+      "Spread_pp": 0.963,
+      "beta_LM": -0.1387,
+      "t_beta": -1.41,
+      "p_beta": 0.1625
+    }
+  },
+  "table5": {
+    "Hawkish": {
+      "E_cum_CAR": 0.3,
+      "VaR_95": -8.3,
+      "CVaR_95": -10.4,
+      "P_loss": 47.5,
+      "N_obs": 108
+    },
+    "Dovish": {
+      "E_cum_CAR": 3.8,
+      "VaR_95": -8.8,
+      "CVaR_95": -12.2,
+      "P_loss": 33.0,
+      "N_obs": 108
+    },
+    "Hawkish+HighVIX": {
+      "E_cum_CAR": -0.6,
+      "VaR_95": -9.8,
+      "CVaR_95": -12.3,
+      "P_loss": 54.6,
+      "N_obs": 69
+    },
+    "Dovish+LowVIX": {
+      "E_cum_CAR": 3.2,
+      "VaR_95": -5.8,
+      "CVaR_95": -8.4,
+      "P_loss": 28.8,
+      "N_obs": 69
+    }
+  },
+  "table7": {
+    "Dovish_mean": 0.133,
+    "Dovish_N": 88,
+    "Hawkish_mean": 0.126,
+    "Hawkish_N": 96,
+    "beta_LM": -0.0959,
+    "t": -1.1,
+    "p": 0.2718,
+    "interpretation": "Gold does not respond significantly to FOMC language"
+  },
+  "table8": {
+    "Dovish_mean": -1.287,
+    "Dovish_N": 108,
+    "Hawkish_mean": -1.454,
+    "Hawkish_N": 108,
+    "beta_LM": -0.0829,
+    "t": -0.27,
+    "p": 0.787,
+    "interpretation": "Both stances reduce VIX (uncertainty resolution); hawkish slightly more"
+  }
+}
