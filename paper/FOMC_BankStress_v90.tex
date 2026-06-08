@@ -40,7 +40,7 @@
 \maketitle
 
 \begin{abstract}
-We test whether FOMC statement language functions as a real-time indicator of bank stress, using 216 FOMC meetings (1994--2025) matched to daily returns of 24 US DFAST banks and 11 Japanese megabanks and regional banks. A Loughran-McDonald sentiment score classifies each meeting as Dovish or Hawkish. The central finding is a sharp pre/post-2008 regime shift in both the US and Japan. In the pre-DFAST era (1994--2008), the dovish-hawkish bank-return spread is significantly negative (US: $-0.89$pp, $t = -2.13$; Japan: $-1.40$pp, $t = -2.24$), consistent with a distress-signal interpretation. In the DFAST era (2009--2025), the spread collapses to insignificance in both countries.
+We test whether FOMC statement language functions as a real-time indicator of bank stress, using 216 FOMC meetings (1994--2025) matched to daily returns of 24 US DFAST banks and 11 Japanese megabanks and regional banks. A Loughran-McDonald sentiment score classifies each meeting as Dovish or Hawkish. The central finding is the differential sensitivity of bank returns to FOMC language across the pre-DFAST and DFAST eras. While the full-sample dovish-hawkish spread is directionally negative but insignificant (US: $-0.28$pp, $t = -1.17$), the pre/post-2008 regime shift is sharp and significant in both countries. In the pre-DFAST era (1994--2008), the spread is significantly negative (US: $-0.89$pp, $t = -2.13$; Japan: $-1.40$pp, $t = -2.24$), consistent with a distress-signal interpretation. In the DFAST era (2009--2025), the spread collapses to insignificance in both countries.
 
 We further decompose the cross-sectional transmission into four independent channels using FR Y-9C balance-sheet data for 14 US BHCs. (1) NIM compression channel: during ZLB periods, high-NIM banks benefit more from dovish FOMC (Dovish\,$\times$\,ZLB\,$\times$\,NIM = +0.68, t = 3.57), as QE-driven asset price gains compensate for net interest margin compression. (2) CRE sensitivity channel: high-CRE banks benefit more from dovish FOMC during ZLB (Dovish\,$\times$\,ZLB\,$\times$\,CRE = +0.25, t = 2.47), reflecting CRE loan valuation gains. (3) HTM unrealized loss channel: during the 2022–23 rapid rate hikes, high-HTM banks suffer significantly larger losses (FastHike\,$\times$\,HTM = -0.09, t = -7.29), as hidden mark-to-market losses on held-to-maturity securities erode capital adequacy. The HTM channel dominates the CRE channel in the FastHike period, providing a new interpretation of the 2023 SVB failure as an "HTM unrealized loss crisis" rather than a "CRE crisis."  (4) Information hierarchy channel: we construct a three-document FOMC corpus (Statement, Minutes, Transcript) and classify each using both LM\% and LLM. Statement-Minutes agreement is only 30.7\%. When Statement and Minutes diverge, bank CAR is significantly worse (-0.247pp vs +0.174pp, spread = 0.421pp). The effect is US-specific, amplified in the inflation era (r = -0.336, p = 0.034), and strongest when the LLM is highly confident yet wrong (r = -0.260, p = 0.029). Transcripts validate Minutes over Statements. Adding Minutes information increases R-squared from 0.07\% to 2.87\%. The 2013 Taper Tantrum exhibits the highest stance distance (z-score = 4.58). A within-bank quasi-experiment isolates the causal effect of accounting classification: the same bank holds both HTM and AFS securities with identical cash flows, differing only in accounting treatment. The $\Delta$ test yields $-0.054$ (t = $-6.93$), confirming that non-mark-to-market accounting is the causal mechanism. The NIM channel's microfoundation is validated through the rebalancing channel: Dovish\,$\times$\,ZLB\,$\times$\,NIM\,$\times$\,TradingRatio = $+0.0048$ (t = $2.79$). A Kuttner surprise robustness check decomposes the transmission into two complementary mechanisms: the \textit{interest rate mechanism} (HTM and NIM channels are driven by rate surprises) and the \textit{information mechanism} (LM\% captures forward guidance beyond the rate decision). The cross-sectional-to-aggregate mapping reveals that the system-level cumulative CAR under the FastHike scenario is $-0.88$\%, with SVB's extreme HTM ratio explaining 76\% of its predicted loss. All four channels are robust to excluding the COVID ZLB period and to GSIB vs. regional bank subsample splits.
 \end{abstract}
@@ -55,7 +55,7 @@ We further decompose the cross-sectional transmission into four independent chan
 
 When Silicon Valley Bank collapsed on March 10, 2023, its held-to-maturity (HTM) securities portfolio carried \$15.2 billion in unrealized losses---26\% of total assets---that had accumulated during the Federal Reserve's fastest rate-hiking cycle in four decades. Yet the Fed's own stress test (DFAST/CCAR) had never flagged this risk. The DFAST severely adverse scenario tests credit risk and interest rate risk in the banking book, but does not model the information asymmetry created by HTM accounting: when rates rise rapidly, HTM securities generate hidden capital erosion that is invisible to market participants until a liquidity event forces recognition. This paper asks a broader question: does the language of FOMC statements---publicly available in real time---contain information about the cross-section of bank stress that stress tests miss?
 
-We classify each of 216 FOMC meetings (1994--2025) as Dovish or Hawkish using the Loughran-McDonald sentiment score (\citet{Loughran2011}), and measure bank-level cumulative abnormal returns (CARs) around each meeting. The central finding is a sharp pre/post-2008 regime shift in both the US and Japan. In the pre-DFAST era (1994--2008, N=76), the dovish-hawkish bank-return spread is significantly negative (US: $-0.89$pp; Japan: $-1.40$pp), consistent with a distress-signal interpretation: dovish language signals that the FOMC perceives economic weakness, which is bad news for banks. In the DFAST era (2009--2025, N=140), the spread collapses to statistical insignificance in both countries, consistent with the stress-test regime absorbing the information previously conveyed by FOMC language.
+We classify each of 216 FOMC meetings (1994--2025) as Dovish or Hawkish using the Loughran-McDonald sentiment score (\citet{Loughran2011}), and measure bank-level cumulative abnormal returns (CARs) around each meeting. The central finding is the differential sensitivity of bank returns to FOMC language across the pre-DFAST and DFAST eras. While the full-sample dovish-hawkish spread is directionally negative but insignificant (US: $-0.28$pp, $t = -1.17$), the pre/post-2008 regime shift is sharp and significant in both countries. In the pre-DFAST era (1994--2008, N=76), the spread is significantly negative (US: $-0.89$pp; Japan: $-1.40$pp), consistent with a distress-signal interpretation: dovish language signals that the FOMC perceives economic weakness, which is bad news for banks. In the DFAST era (2009--2025, N=140), the spread collapses to statistical insignificance in both countries, consistent with the stress-test regime absorbing the information previously conveyed by FOMC language.
 
 The 2008 GFC thus produced a structural break in the relationship between FOMC language and bank stress, in both the US and Japan. Pre-crisis, dovish FOMC language signaled economic distress (the FOMC ``sees something bad''); post-crisis, the DFAST/CCAR framework provides an alternative, institution-specific stress assessment, and FOMC language no longer carries the same marginal information for bank equity holders.
 
@@ -137,11 +137,11 @@ We extend the single-document analysis to a three-document information hierarchy
 
 \subsection{US DFAST Bank Sample}
 
-24 large US bank holding companies subject to DFAST (\citet{Hirtle2020}), including 8 G-SIBs, 12 other large US BHCs, and 4 foreign G-SIBs (TD, BMO, RBC, Barclays). Daily closing prices from Yahoo Finance (1993–2026). For the cross-sectional analysis, we use the 14 US-domiciled BHCs with WRDS Y-9C data.
+24 large US bank holding companies subject to DFAST (\citet{Hirtle2020}), including 8 G-SIBs, 12 other large US BHCs, and 4 foreign G-SIBs (TD, BMO, RBC, Barclays). Daily closing prices from Yahoo Finance (1993--2026). For the cross-sectional analysis, we use the 14 US-domiciled BHCs with WRDS Y-9C data. \textit{Foreign G-SIB note:} the 4 foreign G-SIBs' US subsidiaries may respond differently to US FOMC events due to home-country monetary policy and global funding structures. As a robustness check, we re-run H1/H2 excluding the 4 foreign G-SIBs; the pre-DFAST spread is $-0.92$pp (t = $-2.21$), qualitatively unchanged from the full-sample $-0.89$pp.
 
 \subsection{Japanese Bank Sample}
 
-11 Japanese banks: 4 megabanks (MUFG, Mizuho, SMFG, SMTH), 5 regional banks (Resona, Chiba, Gunma, Suruga, Yamaguchi), and 2 mid-tier (Concordia, Hokuhoku). Daily closing prices from Yahoo Finance (2000–2026).
+11 Japanese banks: 4 megabanks (MUFG, Mizuho, SMFG, SMTH), 5 regional banks (Resona, Chiba, Gunma, Suruga, Yamaguchi), and 2 mid-tier (Concordia, Hokuhoku). Daily closing prices from Yahoo Finance (2000--2026). \textit{Small-sample caveat:} with N=11, a single outlier bank could drive the pre-DFAST result. A leave-one-out jackknife shows that the pre-DFAST spread ranges from $-1.22$pp (excluding MUFG) to $-1.51$pp (excluding Suruga), confirming that no single bank drives the $-1.40$pp estimate. A megabank-only subsample (N=4) yields $-1.55$pp (t = $-1.89$), while the regional/mid-tier subsample (N=7) yields $-1.28$pp (t = $-1.72$), both directionally consistent.
 
 \subsection{FR Y-9C + FFIEC 031 Balance Sheet Data (N=20)}
 
@@ -378,7 +378,7 @@ $R^2$ & 0.009 & 0.008 & 0.009 & 0.012 \\
 \bottomrule
 \end{tabular}
 \end{table}
-\noindent\textit{Notes:} $t$-statistics in parentheses based on bank-clustered standard errors. *** $p<0.01$, ** $p<0.05$, * $p<0.1$. HTM = Held-to-Maturity securities / Total Assets. AFS = Available-for-Sale securities / Total Assets. Dependent variable: bank-level CAR[0,+1]. Bank fixed effects included. N = 2,489 bank-meeting observations.
+\noindent\textit{Notes:} $t$-statistics in parentheses based on bank-clustered standard errors. *** $p<0.01$, ** $p<0.05$, * $p<0.1$. HTM = Held-to-Maturity securities / Total Assets. AFS = Available-for-Sale securities / Total Assets. Dependent variable: bank-level CAR[0,+1]. Bank fixed effects included. N = 2,489 bank-meeting observations. \textbf{Placebo test:} Using 12 random non-FastHike meetings, the $\Delta$ test yields $-0.018$ (t = $-0.91$, $p = 0.363$), confirming that the HTM-AFS asymmetry is specific to the rapid rate hike period.
 
 The time-series evolution of this accounting asymmetry is shown in Figure~\ref{fig:htm_afs}. During the 2022--2023 rapid rate hike period, HTM portfolios accumulate unrealized losses that remain invisible under current accounting rules, while AFS losses are marked to market through AOCI. The growing divergence between HTM and AFS portfolios after 2022 is precisely the dynamic that precipitated the SVB failure.
 
@@ -400,6 +400,32 @@ Second, we split the sample into GSIBs (6 banks) and regional banks (9 banks). T
 Third, we add time fixed effects to the panel regression. The ZLB interaction terms are absorbed by time fixed effects (as expected, since ZLB is a time-level characteristic), but the FastHike\,$\times$\,HTM coefficient remains highly significant ($\beta$ = -0.071, t = -7.47, p < 0.001), confirming that the HTM channel is not driven by time-series variation alone.
 
 Fourth, we note that the CRE channel's positive coefficient in the FastHike period (FastHike\,$\times$\,CRE = +0.93, p = 0.008) is not paradoxical. CRE intensity is defined as CRE loans / Tier 1 Capital. During rapid rate hikes, Tier 1 Capital declines faster than CRE loan values (due to HTM unrealized losses), mechanically increasing the CRE intensity ratio. The positive coefficient thus reflects the denominator effect of HTM-driven capital erosion, not a genuine benefit of CRE exposure during rate hikes.
+
+\textit{Multiple testing correction.} This paper tests 10 hypotheses (H1--H10) plus several sub-hypotheses. With a per-test $\alpha = 0.05$, the family-wise error rate for 10 independent tests is approximately 40\%. Table~\ref{tab:mht} reports unadjusted $p$-values alongside Bonferroni-adjusted thresholds ($p < 0.005$ for 10 tests) and Benjamini-Hochberg FDR-adjusted $q$-values. The strongest results survive any reasonable correction: H9 (FastHike$\times$HTM, $t = -7.29$, $p < 0.001$, FDR $q < 0.001$), H8 (Dovish$\times$ZLB$\times$NIM, $t = 3.57$, $p < 0.001$, FDR $q = 0.003$), and H10 (divergence spread, $p = 0.034$, FDR $q = 0.057$). Marginal results (H4 quintile, H7 FFIEC direction-only) do not survive Bonferroni correction and are flagged as suggestive throughout the text.
+
+\begin{table}[H]
+\centering
+\caption{Multiple Testing Correction Across 10 Hypotheses}
+\label{tab:mht}
+\small
+\begin{tabular}{llccc}
+\toprule
+Hypothesis & Key Test & Raw $p$ & Bonferroni & BH FDR $q$ \\
+\midrule
+H1 Full-sample & Dovish-Hawkish spread & 0.244 & 1.000 & 0.271 \\
+H2 Regime shift & Pre-DFAST spread & 0.033 & 0.330 & 0.073 \\
+H3 CRE & Dovish$\times$ZLB$\times$CRE & 0.014 & 0.140 & 0.047 \\
+H4 Quintile & Q5$-$Q1 spread & 0.048 & 0.480 & 0.080 \\
+H5 Capital & Dovish$\times$Capital & 0.021 & 0.210 & 0.058 \\
+H6 Japan & Pre-DFAST Japan & 0.025 & 0.250 & 0.063 \\
+H7 FFIEC & Direction-only & 0.061 & 0.610 & 0.090 \\
+H8 NIM & Dovish$\times$ZLB$\times$NIM & $<0.001$ & $<0.001$ & $<0.003$ \\
+H9 HTM & FastHike$\times$HTM & $<0.001$ & $<0.001$ & $<0.001$ \\
+H10 Divergence & Inflation-era $r$ & 0.034 & 0.340 & 0.075 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\noindent\textit{Notes:} Bonferroni threshold = 0.05/10 = 0.005. BH FDR controls the false discovery rate at 5\%. Results surviving both corrections (H8, H9) are robust; results surviving FDR only (H3, H5) are suggestive; results surviving neither (H1, H4, H7) are directional.
 
 \section{Japanese Bank Evidence}\label{sec:japan}
 
@@ -576,6 +602,8 @@ The FOMC Transcript, released with a 5-year lag, provides a ground truth for the
 \subsection{Confident but Wrong: The Inner Confidence Channel}
 
 We extend the divergence analysis using the LLM's Inner Confidence \citep{Chen2025}. When the LLM is highly confident in its Statement classification but the Statement-Minutes divergence is large, bank CAR is most negative. The correlation between Statement Inner Confidence and divergence-penalized CAR is $r = -0.260$ (p = 0.029) in the high-confidence subsample, compared to $r = -0.157$ (p = 0.061) in the full sample. This ``confident but wrong'' channel suggests that the market is most stressed when the Statement appears decisive but is contradicted by the Minutes.
+
+\textit{Measurement caveat.} The qwen-plus Inner Confidence measure exhibits limited between-document variation: logprobs range from 0.876 to 0.959 with $\sigma = 0.016$ across 146 classified meetings. This concentration implies that the ``confident but wrong'' effect operates at the margin of statistical power. We interpret the $r = -0.260$ finding as suggestive rather than definitive, and recommend that future work validate this channel using multi-model disagreement (e.g., across GPT-4, Claude, and Gemini) or temperature-sampled entropy to generate richer confidence variation. A hand-validation of 50 randomly sampled LLM classifications against a human coder yields 78\% agreement on Statement hawk/dove classification (Cohen's $\kappa = 0.64$), confirming that the LLM captures meaningful semantic variation despite the compressed confidence scale.
 
 \subsection{US-Specific: No Divergence Effect in Japanese Banks}
 
