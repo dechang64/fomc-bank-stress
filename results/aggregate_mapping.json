@@ -1,0 +1,138 @@
+{
+  "analysis_type": "cross_sectional_to_aggregate",
+  "coefficients": {
+    "beta_fh_htm": -0.053779319130612534,
+    "beta_fh_afs": 0.00029098969152753203,
+    "beta_dov_zlb_nim": -0.0005186116715644539,
+    "beta_dov_zlb_nim_trading": 0.004812067870760921
+  },
+  "system_characteristics": {
+    "total_assets_bn": 18.314288006,
+    "n_banks": 14,
+    "asset_weighted_htm": 0.059465706973877715,
+    "asset_weighted_nim": 0.004678534976185149,
+    "asset_weighted_trading": 0.16893330720726896
+  },
+  "scenario_fasthike": {
+    "per_meeting_system_car_pp": -0.07373929760978684,
+    "cumulative_12_meetings_pp": -0.8848715713174422
+  },
+  "scenario_dovish_zlb": {
+    "per_meeting_system_car_pp": 0.00015665771289180623,
+    "cumulative_76_meetings_pp": 0.011905986179777273
+  },
+  "svb_counterfactual": {
+    "svb_htm_ratio": 0.431,
+    "svb_pred_car_per_meeting_pp": -2.3178886545294,
+    "svb_cumulative_12_pp": -27.8146638543528,
+    "avg_bank_cumulative_12_pp": -0.8848715713174422,
+    "counterfactual_avg_htm_cumulative_12_pp": -6.57308700710228,
+    "htm_effect_pp": 21.24157684725052
+  },
+  "current_vs_2022": {
+    "current_system_car_pp": -0.07373929760978684,
+    "current_cumulative_12_pp": -0.8848715713174422,
+    "fh_start_system_car_pp": -0.04276014198262183,
+    "fh_start_cumulative_12_pp": -0.5131217037914619
+  },
+  "vulnerability_ranking": [
+    {
+      "ticker": "FITB",
+      "htm_ratio": 0.2179309787603648,
+      "pred_car_pp": -1.1623246767608986,
+      "assets_bn": 0.297039,
+      "contribution_pp": -0.018851716187234264
+    },
+    {
+      "ticker": "RF",
+      "htm_ratio": 0.2019009796138965,
+      "pred_car_pp": -1.0813147007265564,
+      "assets_bn": 0.035558193,
+      "contribution_pp": -0.002099431701061791
+    },
+    {
+      "ticker": "TFC",
+      "htm_ratio": 0.1804275078052541,
+      "pred_car_pp": -0.9514690245896233,
+      "assets_bn": 0.227580032,
+      "contribution_pp": -0.011823301620689564
+    },
+    {
+      "ticker": "PNC",
+      "htm_ratio": 0.17221073483072,
+      "pred_car_pp": -0.9047441056891611,
+      "assets_bn": 0.603049584,
+      "contribution_pp": -0.029791251310646263
+    },
+    {
+      "ticker": "MTB",
+      "htm_ratio": 0.1566807614931823,
+      "pred_car_pp": -0.8426184673969238,
+      "assets_bn": 0.214736,
+      "contribution_pp": -0.009879746302759208
+    },
+    {
+      "ticker": "USB",
+      "htm_ratio": 0.1249475747434372,
+      "pred_car_pp": -0.6221293530748128,
+      "assets_bn": 0.700998,
+      "contribution_pp": -0.023812633726403222
+    },
+    {
+      "ticker": "CFG",
+      "htm_ratio": 0.116528086199114,
+      "pred_car_pp": -0.6045288606374455,
+      "assets_bn": 0.228302857,
+      "contribution_pp": -0.007535955860105942
+    },
+    {
+      "ticker": "WFC",
+      "htm_ratio": 0.0810542593767128,
+      "pred_car_pp": -0.2557720233349356,
+      "assets_bn": 2.205757,
+      "contribution_pp": -0.03080496116968171
+    },
+    {
+      "ticker": "NTRS",
+      "htm_ratio": 0.0208670128725676,
+      "pred_car_pp": -0.11055650708477922,
+      "assets_bn": 0.17457434,
+      "contribution_pp": -0.0010538399991693707
+    },
+    {
+      "ticker": "BAC",
+      "htm_ratio": 0.0726666144192557,
+      "pred_car_pp": -0.07785851810628536,
+      "assets_bn": 3.496186,
+      "contribution_pp": -0.014863141875608952
+    },
+    {
+      "ticker": "STT",
+      "htm_ratio": 0.0040850152359338,
+      "pred_car_pp": -0.016374191094581166,
+      "assets_bn": 0.392165,
+      "contribution_pp": -0.0003506215829139901
+    },
+    {
+      "ticker": "JPM",
+      "htm_ratio": 0.0390576423714027,
+      "pred_car_pp": 0.009026505224207825,
+      "assets_bn": 4.900475,
+      "contribution_pp": 0.0024152816191439245
+    },
+    {
+      "ticker": "C",
+      "htm_ratio": 0.0243846768912408,
+      "pred_car_pp": 0.18219820515753454,
+      "assets_bn": 2.777687,
+      "contribution_pp": 0.027633593275567966
+    },
+    {
+      "ticker": "GS",
+      "htm_ratio": 0.0131969051247949,
+      "pred_car_pp": 0.4185109575353179,
+      "assets_bn": 2.06018,
+      "contribution_pp": 0.047078428831775536
+    }
+  ]
+}

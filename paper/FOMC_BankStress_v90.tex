@@ -373,6 +373,76 @@ The parallel US-Japan regime shift motivates a direct comparison. Figure~\ref{fi
 
 The pre-DFAST dovish-hawkish bank-return spread is -1.40pp for Japanese banks vs -0.89pp for US banks, a 57\% larger effect. Both effects are statistically significant at the 5\% level. The pattern is consistent with the ``dollar channel'' interpretation (\citet{Rey2013}): Japanese banks' greater dependence on international dollar funding makes them more sensitive to FOMC signals about the economic outlook.
 
+\section{Cross-Sectional to Aggregate Mapping}\label{sec:aggregate}
+
+The preceding analyses identify cross-sectional channels through which FOMC communication affects individual banks. We now map these bank-level effects to system-level impact, addressing the macro policy question: \textit{how vulnerable is the banking system as a whole?}
+
+\subsection{System-Level CAR Under Stress Scenarios}
+
+Using the cross-sectional coefficients from the quasi-experiment (Table~\ref{tab:htm_afs_did}) and the NIM microfoundation (Table~\ref{tab:nim_microfoundation}), we compute predicted CAR for each bank under two scenarios, then aggregate using asset weights:
+
+\begin{equation}
+\text{System CAR}_t = \sum_{i=1}^{N} w_i \cdot \hat{\text{CAR}}_{i,t}, \quad w_i = \frac{\text{Assets}_i}{\sum_j \text{Assets}_j}
+\end{equation}
+
+Table~\ref{tab:aggregate} reports the results. Under the FastHike scenario (12 meetings of rapid rate hikes), the system-level cumulative CAR is $-0.88$\%, driven primarily by the HTM channel. The top three banks (GS, WFC, PNC) contribute 47\% of the system impact, reflecting the concentration of HTM exposure in a few large institutions.
+
+\begin{table}[H]
+\centering
+\caption{System-Level CAR Impact Under Stress Scenarios}
+\label{tab:aggregate}
+\small
+\begin{tabular}{lll}
+\toprule
+ & FastHike (12 meetings) & Dovish ZLB (76 meetings) \\
+\midrule
+Per-meeting system CAR & $-0.074$\% & $0.000$\% \\
+Cumulative system CAR & $-0.88$\% & $+0.01$\% \\
+Top-3 bank contribution & 47.2\% & --- \\
+System VaR (5\%) & $-2.80$\% & $-2.77$\% \\
+System CVaR (5\%) & $-3.09$\% & $-3.91$\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+\noindent\textit{Notes:} System CAR is the asset-weighted average of bank-level predicted CARs. FastHike uses $\beta_{\text{HTM}} = -0.054$ and $\beta_{\text{AFS}} = +0.0003$ from Table~\ref{tab:htm_afs_did}. Dovish ZLB uses $\beta_{\text{NIM}} = -0.0005$ and $\beta_{\text{NIM}\times\text{Trading}} = +0.0048$ from Table~\ref{tab:nim_microfoundation}. VaR and CVaR are computed from the empirical distribution of asset-weighted system CARs.
+
+\subsection{SVB Counterfactual: The Role of HTM Concentration}
+
+The SVB failure provides a natural test of the cross-sectional model. SVB's HTM ratio (43.1\%) was 3.9 times the DFAST bank average (11.1\%) and 1.5 times the sample maximum (28.0\%). Using the Bank+Time FE coefficient ($\beta = -0.054$), the predicted CAR per FastHike meeting is $-2.32$\% for SVB versus $-0.07$\% for the average DFAST bank. Over 12 meetings, the cumulative predicted loss reaches $-27.8$\%, consistent with SVB's actual equity decline.
+
+A counterfactual analysis reveals the causal contribution of HTM concentration: if SVB had held the average DFAST bank's HTM ratio (10.2\%), its cumulative predicted loss would be only $-6.6$\%. The difference of $+21.2$ percentage points implies that SVB's extreme HTM ratio explains 76\% of its predicted loss. This finding directly supports the policy recommendation that stress tests should include HTM concentration as a risk factor.
+
+Figure~\ref{fig:svb_counterfactual} visualizes this decomposition. Panel A compares cumulative CAR for SVB (actual HTM), SVB (average HTM), and the DFAST average. Panel B shows that SVB's HTM ratio was an extreme outlier relative to the DFAST bank distribution.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_svb_counterfactual.png}
+\caption{SVB Counterfactual Analysis. Panel A: Cumulative CAR under FastHike scenario for SVB (actual HTM ratio), SVB (counterfactual average HTM ratio), and the DFAST bank average. Panel B: HTM ratio distribution across DFAST banks with SVB reference line.}
+\label{fig:svb_counterfactual}
+\end{figure}
+
+\subsection{Bank Vulnerability Ranking}
+
+Figure~\ref{fig:vulnerability} ranks banks by predicted CAR under the FastHike scenario using current balance sheet data. Regional banks (FITB, RF, TFC, PNC, MTB) are the most vulnerable, with predicted CARs of $-0.84$\% to $-1.16$\% per meeting. Universal banks with large trading operations (GS, C, JPM) are the least vulnerable, with some even showing positive predicted CARs due to their large AFS portfolios. This ranking has direct supervisory implications: the banks most vulnerable to a FastHike scenario are precisely the regional banks that received the least supervisory attention before the 2023 crisis.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_aggregate_vulnerability.png}
+\caption{Bank Vulnerability Ranking Under FastHike Scenario. Predicted CAR per meeting based on cross-sectional coefficients and current balance sheet data. The purple dashed line marks SVB's predicted CAR ($-2.32$\%).}
+\label{fig:vulnerability}
+\end{figure}
+
+\subsection{System CVaR and Tail Risk}
+
+Figure~\ref{fig:system_cvar} compares system-level VaR and CVaR across periods. The non-crisis period has the highest CVaR ($-5.20$\%), reflecting occasional severe bank stress events outside of recognized crisis periods. The FastHike period has a lower CVaR ($-3.09$\%) but a higher mean CAR ($-0.41$\% vs $-0.18$\%), indicating that FastHike stress is more uniformly distributed across banks rather than concentrated in the tail. This pattern is consistent with the HTM channel operating through a systematic factor (interest rate risk) rather than idiosyncratic bank risk.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/fig_system_cvar.png}
+\caption{System-Level Risk by Period. VaR(5\%) and CVaR(5\%) of the asset-weighted DFAST bank portfolio CAR, computed from the empirical distribution.}
+\label{fig:system_cvar}
+\end{figure}
+
 \section{Reverse Stress Test Application}\label{sec:reverse}
 
 The regime-conditional framework can be applied to reverse stress testing: identifying the FOMC stance-regime combinations that pose the greatest threat to bank capital. Figure~\ref{fig:reverse_stress} summarizes the tail-risk implications.
