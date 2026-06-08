@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.7)  7 JUN 2026 20:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.7)  8 JUN 2026 08:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -404,131 +404,147 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/home/z/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
-Overfull \hbox (0.15875pt too wide) in paragraph at lines 115--116
+{/home/z/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (1.37898pt too wide) in paragraph at lines 53--54
+\OT1/cmr/m/n/12 The Fed-eral Re-serve's an-nual stress test (DFAST/CCAR; []Fed-eral Re-serve Sys-tem[] ([]2024a[]))
+ []
+
+
+Overfull \hbox (3.60541pt too wide) in paragraph at lines 53--54
+\OT1/cmr/m/n/12 clas-sify each of 216 FOMC meet-ings (1994{2025) as Dovish or Hawk-ish us-ing the Loughran-
+ []
+
+[3] [4] [5]
+Overfull \hbox (0.15875pt too wide) in paragraph at lines 101--102
 \OT1/cmr/m/n/12 BHCs from WRDS (bank.wrds[]holding[]bhck[]1 and bhck[]2, 2000{2025, 1,782 bank-quarter
  []
 
 
-Overfull \hbox (15.68248pt too wide) in paragraph at lines 115--116
+Overfull \hbox (15.68248pt too wide) in paragraph at lines 101--102
 \OT1/cmr/m/n/12 ob-ser-va-tions). Key vari-ables in-clude: to-tal as-sets (bhck2170), net in-ter-est in-come (bhck4079),
  []
 
 
-Overfull \hbox (786.10493pt too wide) detected at line 123
+Overfull \hbox (786.10493pt too wide) detected at line 109
 [][][][][] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12  \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^L[][][] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^L[][][] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 ([][] \OMS/cmsy/m/n/12 ^^B [][]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^L[][][] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 ([][] \OMS/cmsy/m/n/12 ^^B [][]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 ([][] \OMS/cmsy/m/n/12 ^^B [][] ^^B [][]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^L[][][] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 ([][] \OMS/cmsy/m/n/12 ^^B [][]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 ([][] \OMS/cmsy/m/n/12 ^^B [][] ^^B [][]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^L[][][] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 ([][] \OMS/cmsy/m/n/12 ^^B [][]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^L[]\OT1/cmr/m/n/12 ([][] \OMS/cmsy/m/n/12 ^^B [][]\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 "[]
  []
 
 [6]
-<figures/fig_regime_car.png, id=193, 713.3049pt x 277.9986pt>
+<figures/fig_regime_car.png, id=241, 713.3049pt x 277.9986pt>
 File: figures/fig_regime_car.png Graphic file (type png)
 <use figures/fig_regime_car.png>
-Package pdftex.def Info: figures/fig_regime_car.png  used on input line 139.
+Package pdftex.def Info: figures/fig_regime_car.png  used on input line 125.
 (pdftex.def)             Requested size: 432.48051pt x 168.55658pt.
  [7 <./figures/fig_regime_car.png>]
-<figures/fig_h4_quintile.png, id=204, 569.84895pt x 353.03896pt>
+<figures/fig_h4_quintile.png, id=253, 569.84895pt x 353.03896pt>
 File: figures/fig_h4_quintile.png Graphic file (type png)
 <use figures/fig_h4_quintile.png>
-Package pdftex.def Info: figures/fig_h4_quintile.png  used on input line 148.
+Package pdftex.def Info: figures/fig_h4_quintile.png  used on input line 134.
 (pdftex.def)             Requested size: 432.48051pt x 267.9353pt.
 
-Overfull \hbox (13.54019pt too wide) in paragraph at lines 157--157
+Overfull \hbox (13.54019pt too wide) in paragraph at lines 143--143
 []\OT1/cmr/bx/n/14.4 Cross-Sectional Val-i-da-tion: CRE Ex-po-sure and Cap-i-tal Build-
  []
 
 [8 <./figures/fig_h4_quintile.png>]
-<figures/fig_channel_nim_htm.png, id=212, 1003.1076pt x 407.96416pt>
+<figures/fig_channel_nim_htm.png, id=263, 1003.1076pt x 407.96416pt>
 File: figures/fig_channel_nim_htm.png Graphic file (type png)
 <use figures/fig_channel_nim_htm.png>
-Package pdftex.def Info: figures/fig_channel_nim_htm.png  used on input line 175.
+Package pdftex.def Info: figures/fig_channel_nim_htm.png  used on input line 161.
 (pdftex.def)             Requested size: 432.48051pt x 175.88803pt.
  [9]
-Overfull \hbox (19.73766pt too wide) in paragraph at lines 180--181
-[]\OT1/cmr/m/n/12 Table 5, Col-umn (1) re-ports the NIM chan-nel re-gres-sion. The co-ef-fi-cient on Dovish$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 NIM
+Overfull \hbox (19.73766pt too wide) in paragraph at lines 166--167
+[]\OT1/cmr/m/n/12 Table []5[], Col-umn (1) re-ports the NIM chan-nel re-gres-sion. The co-ef-fi-cient on Dovish$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 NIM
  []
 
 
-Overfull \hbox (34.95932pt too wide) in paragraph at lines 184--185
-\OT1/cmr/m/n/12 Table 5, Col-umn (2) re-ports the CRE chan-nel re-gres-sion. The co-ef-fi-cient on Dovish$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 ZLB$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 CRE
+Overfull \hbox (34.95932pt too wide) in paragraph at lines 170--171
+\OT1/cmr/m/n/12 Table []5[], Col-umn (2) re-ports the CRE chan-nel re-gres-sion. The co-ef-fi-cient on Dovish$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 ZLB$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 CRE
  []
 
 [10 <./figures/fig_channel_nim_htm.png>] [11] [12]
-<figures/fig_cre_vulnerability.png, id=235, 713.3049pt x 350.2686pt>
+Overfull \hbox (9.43265pt too wide) in paragraph at lines 259--260
+\OT1/cmr/m/it/12 Notes: \OT1/cmr/m/n/12 Spread = Dovish mean CAR $\OMS/cmsy/m/n/12 ^^@$ \OT1/cmr/m/n/12 Hawk-ish mean CAR. N = num-ber of Dovish/Hawkish
+ []
+
+[13]
+<figures/fig_cre_vulnerability.png, id=307, 713.3049pt x 350.2686pt>
 File: figures/fig_cre_vulnerability.png Graphic file (type png)
 <use figures/fig_cre_vulnerability.png>
-Package pdftex.def Info: figures/fig_cre_vulnerability.png  used on input line 311.
+Package pdftex.def Info: figures/fig_cre_vulnerability.png  used on input line 302.
 (pdftex.def)             Requested size: 432.48051pt x 212.37547pt.
- [13]
-<figures/fig_htm_afs_timeline.png, id=242, 713.3049pt x 351.9549pt>
+ [14 <./figures/fig_cre_vulnerability.png>]
+<figures/fig_htm_afs_timeline.png, id=316, 713.3049pt x 351.9549pt>
 File: figures/fig_htm_afs_timeline.png Graphic file (type png)
 <use figures/fig_htm_afs_timeline.png>
-Package pdftex.def Info: figures/fig_htm_afs_timeline.png  used on input line 346.
+Package pdftex.def Info: figures/fig_htm_afs_timeline.png  used on input line 340.
 (pdftex.def)             Requested size: 432.48051pt x 213.3979pt.
- [14 <./figures/fig_cre_vulnerability.png>]
-Overfull \hbox (34.74135pt too wide) in paragraph at lines 355--356
+
+Overfull \hbox (34.74135pt too wide) in paragraph at lines 349--350
 \OT1/cmr/m/n/12 ZLB re-sults are not driven by the pan-demic. The NIM chan-nel strength-ens (Dovish$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 ZLB$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 NIM
  []
 
 [15 <./figures/fig_htm_afs_timeline.png>]
-<figures/fig_cross_market_us_japan.png, id=256, 642.11896pt x 388.8126pt>
+<figures/fig_cross_market_us_japan.png, id=324, 642.11896pt x 388.8126pt>
 File: figures/fig_cross_market_us_japan.png Graphic file (type png)
 <use figures/fig_cross_market_us_japan.png>
-Package pdftex.def Info: figures/fig_cross_market_us_japan.png  used on input line 391.
+Package pdftex.def Info: figures/fig_cross_market_us_japan.png  used on input line 369.
 (pdftex.def)             Requested size: 432.48051pt x 261.87949pt.
  [16]
-<figures/fig_reverse_stress_test.png, id=266, 1004.19165pt x 408.68684pt>
+<figures/fig_reverse_stress_test.png, id=337, 1004.19165pt x 408.68684pt>
 File: figures/fig_reverse_stress_test.png Graphic file (type png)
 <use figures/fig_reverse_stress_test.png>
-Package pdftex.def Info: figures/fig_reverse_stress_test.png  used on input line 402.
+Package pdftex.def Info: figures/fig_reverse_stress_test.png  used on input line 382.
 (pdftex.def)             Requested size: 432.48051pt x 176.0063pt.
  [17 <./figures/fig_cross_market_us_japan.png>] [18 <./figures/fig_reverse_stress_test.png>]
-Overfull \hbox (8.00905pt too wide) in paragraph at lines 417--418
-\OT1/cmr/m/n/12 Table 8 re-ports the pair-wise agree-ment rates across the three FOMC doc-u-ments. Statement-
+Overfull \hbox (8.00905pt too wide) in paragraph at lines 397--398
+\OT1/cmr/m/n/12 Table []7[] re-ports the pair-wise agree-ment rates across the three FOMC doc-u-ments. Statement-
  []
 
 [19] [20] [21]
-Overfull \hbox (132.84947pt too wide) in paragraph at lines 497--498
+Overfull \hbox (132.84947pt too wide) in paragraph at lines 477--478
 []\OT1/cmr/m/n/12 )$ (r = $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 134$, p = 0.11); and (4) three-document dis-sent score $= []([]\OML/cmm/m/it/12 ; []; []\OT1/cmr/m/n/12 )$
  []
 
-[22] [23]
-Overfull \hbox (23.08731pt too wide) in paragraph at lines 519--520
+[22]
+
+LaTeX Warning: Reference `tab:htm_afs_did' on page 23 undefined on input line 493.
+
+[23]
+Overfull \hbox (23.08731pt too wide) in paragraph at lines 499--500
 \OT1/cmr/m/n/12 bank eq-uity re-turns. Dur-ing ZLB pe-ri-ods, the NIM com-pres-sion chan-nel (Dovish$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 ZLB$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 NIM
  []
 
-
-Overfull \hbox (33.65332pt too wide) in paragraph at lines 521--522
+[24]
+Overfull \hbox (33.65332pt too wide) in paragraph at lines 501--502
 \OT1/cmr/m/n/12 losses. Sec-ond, the HTM vs AFS asym-me-try sug-gests that ac-count-ing trans-parency|specifically,
  []
 
-[24] [25] [26] [27] (./FOMC_BankStress_v90.aux)
+[25] [26] [27] (./FOMC_BankStress_v90.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
  ***********
 
 
-Package rerunfilecheck Warning: File `FOMC_BankStress_v90.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: Checksums for `FOMC_BankStress_v90.out':
-(rerunfilecheck)             Before: 9F2D944B491C9663F3551D4D6DBDB274;8567
-(rerunfilecheck)             After:  A67E73165C1EFE5595378F6302325247;9184.
+Package rerunfilecheck Info: File `FOMC_BankStress_v90.out' has not changed.
+(rerunfilecheck)             Checksum: A67E73165C1EFE5595378F6302325247;9184.
  ) 
 Here is how much of TeX's memory you used:
- 13128 strings out of 469157
- 206715 string characters out of 5460244
- 641847 words of memory out of 5000000
- 41879 multiletter control sequences out of 15000+600000
- 637371 words of font info for 75 fonts, out of 8000000 for 9000
+ 13119 strings out of 469157
+ 206569 string characters out of 5460244
+ 644209 words of memory out of 5000000
+ 41876 multiletter control sequences out of 15000+600000
+ 637030 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 74i,13n,79p,2532b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/z/.TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk> </home/z/.TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on FOMC_BankStress_v90.pdf (27 pages, 1034809 bytes).
+ 74i,13n,79p,2159b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/z/.TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on FOMC_BankStress_v90.pdf (27 pages, 1041021 bytes).
 PDF statistics:
- 464 PDF objects out of 1000 (max. 8388607)
- 391 compressed objects within 4 object streams
- 115 named destinations out of 1000 (max. 500000)
- 340 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 525 PDF objects out of 1000 (max. 8388607)
+ 452 compressed objects within 5 object streams
+ 110 named destinations out of 1000 (max. 500000)
+ 356 words of extra memory for PDF output out of 10000 (max. 10000000)
 
