@@ -538,6 +538,38 @@ A natural concern is that the Statement-Minutes divergence merely captures infor
 
 The results are striking. Statement-Press Conference agreement is 76.1\%, much higher than Statement-Minutes agreement (46.6\%), confirming that the press conference largely explains the Statement rather than introducing new information. Critically, Statement-Press Conference divergence does \textit{not} predict bank CAR ($r = -0.102$, p = 0.342), while Statement-Minutes divergence remains highly significant ($r = -0.242$, p = 0.023) in the same 88-meeting subsample. In a horse-race regression controlling for press conference stance and Statement-Press Conference divergence, the Statement-Minutes divergence coefficient is $-0.715$pp (p = 0.08), while the Statement-Press Conference divergence coefficient is $-0.168$pp (p = 0.71). The Minutes contain \textit{unique} information about the Committee's true deliberation that is not captured by either the Statement or the press conference.
 
+\subsection{Kuttner Surprise Robustness: Rate Surprises vs Semantic Content}
+
+A central identification concern is that LM\% may simply proxy for monetary policy surprises rather than capturing independent semantic information. We address this using the \citet{Kuttner2001} target rate surprise, constructed from daily Federal Funds Rate changes on FOMC meeting days, scaled by the proportion of the month remaining after the meeting.
+
+Table~\ref{tab:kuttner} reports the horse race between Kuttner surprise and LM\%. Both measures have significant independent explanatory power for bank CAR: Kuttner surprise $\beta = 0.0030$ (t = $6.90$) and LM\% $\beta = 0.0025$ (t = $8.00$). This confirms that FOMC language conveys information beyond the rate decision itself---forward guidance, risk assessment, and policy commitment.
+
+The cross-sectional channels reveal a striking decomposition. The HTM channel is driven entirely by rate surprises: Kuttner\,$\times$\,FastHike\,$\times$\,HTM = $-0.055$ (t = $-3.19$), while LM\%\,$\times$\,FastHike\,$\times$\,HTM is insignificant (t = $1.49$). Similarly, the NIM channel is rate-surprise-driven: Kuttner\,$\times$\,ZLB\,$\times$\,NIM = $+0.081$ (t = $2.95$), while LM\%\,$\times$\,ZLB\,$\times$\,NIM is insignificant (t = $-0.17$).
+
+This decomposition has a clear economic interpretation: the HTM and NIM channels operate through the \textit{interest rate mechanism} (rate changes affect asset valuations and margins), while LM\% captures the \textit{information mechanism} (language conveys forward guidance and risk assessment). The two mechanisms are complementary, not substitutive. This finding validates our use of LM\% as a measure of FOMC communication content, while confirming that the cross-sectional channels are fundamentally about interest rate risk.
+
+\begin{table}[H]
+\centering
+\caption{Kuttner Surprise Robustness: Rate Surprises vs Semantic Content (N=14 US BHCs, 2000--2025)}
+\label{tab:kuttner}
+\small
+\begin{tabular}{llll}
+\toprule
+ & (1) Kuttner Only & (2) LM\% Only & (3) Both \\
+\midrule
+Kuttner Surprise & $0.0032^{***}$ &  & $0.0030^{***}$ \\
+ & ($7.31$) &  & ($6.90$) \\
+LM\% &  & $0.0027^{***}$ & $0.0025^{***}$ \\
+ &  & ($8.68$) & ($8.00$) \\
+\midrule
+Bank FE & Yes & Yes & Yes \\
+N & 2,556 & 2,556 & 2,556 \\
+$R^2$ (within) & 0.020 & 0.029 & 0.041 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\noindent\textit{Notes:} $t$-statistics in parentheses based on bank-clustered standard errors. *** $p<0.01$, ** $p<0.05$, * $p<0.1$. Kuttner surprise is the scaled daily FFR change on FOMC meeting days. LM\% is the Loughran-McDonald negative word percentage. Both variables are standardized. Dependent variable: bank-level CAR[0,+1].
+
 \subsection{Robustness: Alternative Divergence Measures}
 
 We conduct five robustness checks on the divergence result. (1) Directional gap (Statement stance minus Minutes stance): coefficient = $-0.470$pp (p = 0.12), both hawkish and dovish bluff directions hurt. (2) Hawkish bluff dummy: $-0.470$pp (p = 0.20); Dovish bluff dummy: $-0.396$pp (p = 0.20). (3) Controlling for Minutes negative word ratio: divergence coefficient = $-0.465$pp (p = 0.09). (4) High Statement confidence subsample: $-0.663$pp (p = 0.06). (5) Normal periods (excluding crisis): $-0.519$pp (p = 0.05). The divergence signal is robust across specifications, with the strongest effects in the high-confidence and normal-period subsamples.
