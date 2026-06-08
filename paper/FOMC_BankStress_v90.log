@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.7)  8 JUN 2026 08:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.7)  8 JUN 2026 08:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -506,21 +506,25 @@ Overfull \hbox (132.84947pt too wide) in paragraph at lines 477--478
 []\OT1/cmr/m/n/12 )$ (r = $\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 134$, p = 0.11); and (4) three-document dis-sent score $= []([]\OML/cmm/m/it/12 ; []; []\OT1/cmr/m/n/12 )$
  []
 
-[22]
+[22] [23]
+Overfull \hbox (129.56891pt too wide) in paragraph at lines 495--496
+[]\OT1/cmr/m/n/12 Two ad-di-tional cross-predictions re-veal the chan-nel's struc-ture. First, the Dovish$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 ZLB$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 NIM$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 DepositRatio
+ []
 
-LaTeX Warning: Reference `tab:htm_afs_did' on page 23 undefined on input line 493.
 
-[23]
-Overfull \hbox (23.08731pt too wide) in paragraph at lines 499--500
+LaTeX Warning: Reference `tab:htm_afs_did' on page 24 undefined on input line 521.
+
+[24]
+Overfull \hbox (23.08731pt too wide) in paragraph at lines 527--528
 \OT1/cmr/m/n/12 bank eq-uity re-turns. Dur-ing ZLB pe-ri-ods, the NIM com-pres-sion chan-nel (Dovish$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 ZLB$\OMS/cmsy/m/n/12 ^^B$\OT1/cmr/m/n/12 NIM
  []
 
-[24]
-Overfull \hbox (33.65332pt too wide) in paragraph at lines 501--502
+[25]
+Overfull \hbox (33.65332pt too wide) in paragraph at lines 529--530
 \OT1/cmr/m/n/12 losses. Sec-ond, the HTM vs AFS asym-me-try sug-gests that ac-count-ing trans-parency|specifically,
  []
 
-[25] [26] [27] (./FOMC_BankStress_v90.aux)
+[26] [27] [28] (./FOMC_BankStress_v90.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-05-26>
@@ -533,18 +537,18 @@ Package rerunfilecheck Info: File `FOMC_BankStress_v90.out' has not changed.
 (rerunfilecheck)             Checksum: A67E73165C1EFE5595378F6302325247;9184.
  ) 
 Here is how much of TeX's memory you used:
- 13119 strings out of 469157
- 206569 string characters out of 5460244
- 644209 words of memory out of 5000000
- 41876 multiletter control sequences out of 15000+600000
+ 13122 strings out of 469157
+ 206617 string characters out of 5460244
+ 644337 words of memory out of 5000000
+ 41877 multiletter control sequences out of 15000+600000
  637030 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  74i,13n,79p,2159b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/z/.TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/z/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on FOMC_BankStress_v90.pdf (27 pages, 1041021 bytes).
+Output written on FOMC_BankStress_v90.pdf (28 pages, 1044048 bytes).
 PDF statistics:
- 525 PDF objects out of 1000 (max. 8388607)
- 452 compressed objects within 5 object streams
- 110 named destinations out of 1000 (max. 500000)
+ 531 PDF objects out of 1000 (max. 8388607)
+ 457 compressed objects within 5 object streams
+ 112 named destinations out of 1000 (max. 500000)
  356 words of extra memory for PDF output out of 10000 (max. 10000000)
 
