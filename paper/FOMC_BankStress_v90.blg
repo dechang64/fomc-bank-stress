@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: FOMC_BankStress_v90.aux
 The style file: plainnat.bst
 Database file #1: references.bib
-You've used 24 entries,
+You've used 19 entries,
             2773 wiz_defined-function locations,
-            763 strings with 9043 characters,
-and the built_in function-call counts, 10468 in all, are:
-= -- 969
-> -- 542
-< -- 15
-+ -- 188
-- -- 162
-* -- 842
-:= -- 1631
-add.period$ -- 88
-call.type$ -- 24
-change.case$ -- 125
-chr.to.int$ -- 22
-cite$ -- 48
-duplicate$ -- 476
-empty$ -- 875
-format.name$ -- 196
-if$ -- 2174
-int.to.chr$ -- 3
+            729 strings with 8246 characters,
+and the built_in function-call counts, 8495 in all, are:
+= -- 791
+> -- 452
+< -- 12
++ -- 155
+- -- 135
+* -- 691
+:= -- 1323
+add.period$ -- 70
+call.type$ -- 19
+change.case$ -- 102
+chr.to.int$ -- 18
+cite$ -- 38
+duplicate$ -- 380
+empty$ -- 695
+format.name$ -- 164
+if$ -- 1763
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 21
-newline$ -- 144
-num.names$ -- 96
-pop$ -- 227
+missing$ -- 16
+newline$ -- 116
+num.names$ -- 76
+pop$ -- 177
 preamble$ -- 1
-purify$ -- 102
+purify$ -- 83
 quote$ -- 0
-skip$ -- 356
+skip$ -- 291
 stack$ -- 0
-substring$ -- 399
-swap$ -- 37
+substring$ -- 327
+swap$ -- 30
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 259
+type$ -- 209
 warning$ -- 0
-while$ -- 101
+while$ -- 82
 width$ -- 0
-write$ -- 342
+write$ -- 274

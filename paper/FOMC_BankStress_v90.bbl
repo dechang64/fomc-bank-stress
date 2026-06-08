@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -23,21 +23,10 @@ Alan~S. Blinder, Michael Ehrmann, Marcel Fratzscher, Jakob De~Haan, and David-Ja
 \newblock \emph{Journal of Economic Literature}, 46\penalty0 (4):\penalty0 910--945, 2008.
 \newblock \doi{10.1257/jel.46.4.910}.
 
-\bibitem[{Board of Governors of the Federal Reserve System}(2024{\natexlab{a}})]{Fed2024a}
-{Board of Governors of the Federal Reserve System}.
-\newblock Dodd-frank act stress test publications.
-\newblock \url{https://www.federalreserve.gov/supervisionreg/stress-tests-capital-planning.htm}, 2024{\natexlab{a}}.
-
-\bibitem[{Board of Governors of the Federal Reserve System}(2024{\natexlab{b}})]{Fed2024c}
+\bibitem[{Board of Governors of the Federal Reserve System}(2024)]{Fed2024c}
 {Board of Governors of the Federal Reserve System}.
 \newblock Federal reserve statistical release {H.4.1}: Factors affecting reserve balances.
-\newblock \url{https://www.federalreserve.gov/releases/h41/}, 2024{\natexlab{b}}.
-
-\bibitem[Borio et~al.(2012)Borio, Gambacorta, and Hofmann]{Borio2012}
-Claudio Borio, Leonardo Gambacorta, and Boris Hofmann.
-\newblock The financial cycle and macroeconomics: What have we learnt?
-\newblock \emph{Journal of Banking \& Finance}, 36\penalty0 (11):\penalty0 2994--3010, 2012.
-\newblock \doi{10.1016/j.jbankfin.2012.07.003}.
+\newblock \url{https://www.federalreserve.gov/releases/h41/}, 2024.
 
 \bibitem[Chen et~al.(2025{\natexlab{a}})Chen, Xu, and Wang]{Chen2025}
 Yanzhen Chen, Dechang Xu, and Li~Wang.
@@ -56,21 +45,10 @@ Anna Cieslak, Andreas Schrimpf, and Fabian Visser.
 \newblock \emph{Journal of Financial Economics}, 134\penalty0 (3):\penalty0 625--649, 2019.
 \newblock \doi{10.1016/j.jfineco.2019.07.005}.
 
-\bibitem[Drechsler et~al.(2017)Drechsler, Savov, and Schnabl]{Drechsler2017}
-Itamar Drechsler, Alexi Savov, and Philipp Schnabl.
-\newblock The deposits channel of monetary policy.
-\newblock \emph{Quarterly Journal of Economics}, 132\penalty0 (4):\penalty0 1819--1876, 2017.
-\newblock \doi{10.1093/qje/qjx019}.
-
 \bibitem[{Federal Deposit Insurance Corporation}(2024)]{FDIC2024}
 {Federal Deposit Insurance Corporation}.
 \newblock 2024 {FDIC} risk review.
 \newblock \url{https://www.fdic.gov/system/files/2024-06/2024-risk-review.pdf}, 2024.
-
-\bibitem[Gertler(1994)]{Gertler1994}
-Mark Gertler.
-\newblock \emph{Monetary Policy and the Credit Channel}.
-\newblock Federal Reserve Bank of Kansas City, 1994.
 
 \bibitem[G{\"u}rkaynak et~al.(2005)G{\"u}rkaynak, Sack, and Swanson]{Gurkaynak2005}
 Refet~S. G{\"u}rkaynak, Brian~P. Sack, and Eric~T. Swanson.
@@ -94,12 +72,6 @@ Stephen Hansen, Michael McMahon, and Andrea Prat.
 Beverly Hirtle, Anna Kovner, James Vickery, and Meru Bhanot.
 \newblock Assessing financial stability: The {Comprehensive Capital Analysis and Review}.
 \newblock \emph{Federal Reserve Bank of New York Economic Policy Review}, 26\penalty0 (1):\penalty0 1--28, 2020.
-
-\bibitem[Jeenas(2019)]{Jeenas2019}
-Priit Jeenas.
-\newblock Firm balance sheet liquidity, monetary policy shocks, and investment dynamics.
-\newblock \emph{Working Paper}, 2019.
-\newblock Stockholm School of Economics.
 
 \bibitem[Kuttner(2001)]{Kuttner2001}
 Kenneth~N. Kuttner.
