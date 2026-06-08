@@ -1,0 +1,191 @@
+
+================================================================
+FOMC Conference Paper (v4) — Complete Code Audit Report
+================================================================
+Date: 2026-06-08
+Auditor: 思怡 (AI Code Auditor)
+Paper: "FOMC Language as a Stress-Test Scenario Design Tool:
+       Mechanism-Complete Cross-Asset Stress Testing with
+       Central Bank Communication"
+Author: Eileen Zhang
+
+================================================================
+EXECUTIVE SUMMARY
+================================================================
+
+After reconstructing all missing data (Nikkei 225 from Yahoo Finance,
+VIX from FRED API, Gold from Yahoo Finance, S&P 500 from Yahoo Finance)
+and testing every reasonable methodology variant, the conference paper's
+core empirical claims CANNOT be reproduced.
+
+The closest reproduction achieves ~78% of the paper's Nikkei spread
+(0.88pp vs 1.132pp) using LM% median split on non-zero-surprise events,
+but this is still not statistically significant (t=1.69, p=0.094).
+
+================================================================
+DATA SOURCES USED FOR VERIFICATION
+================================================================
+
+1. Nikkei 225: Yahoo Finance ^N225 (1993-01-04 to 2025-12-30, 8096 obs)
+2. S&P 500: Yahoo Finance ^GSPC (1993-01-04 to 2025-12-30, 8306 obs)
+3. VIX: FRED VIXCLS API (1993-01-04 to 2025-12-31, 8333 obs)
+4. Gold: Yahoo Finance GC=F futures (2000-08-30 to 2025-12-30, 6357 obs)
+   NOTE: FRED GOLDAMGBD228NLBM series no longer exists in API
+5. USDJPY: From repository (1996-10-30 to present)
+6. FOMC dates + LM%: From repository (216 events, 1994-2025)
+7. Kuttner surprise: From repository (212 events)
+
+================================================================
+BUG INVENTORY
+================================================================
+
+🔴 BUG #1 [FATAL] H1 Orthogonality R² Cannot Be Reproduced
+   Paper:  R² = 2.76%, F = 6.03, p = 0.015 (N = 216)
+   Data:   R² = 4.99%, F = 11.03, p = 0.001 (N = 212)
+   Note:   4 events missing from Kuttner data (1997-01-09,
+           1998-10-15, 2000-10-10, 2019-10-11)
+   Tried:  Different rate surprise measures, subsamples
+   Result: Cannot reproduce 2.76% with any specification
+   Impact: The orthogonality is actually STRONGER than claimed,
+           but the specific number is wrong
+
+🔴 BUG #2 [FATAL] CVaR is Actually VaR (Definition Error)
+   Code:   cvar_95 = np.percentile(cum_cars, 5)
+   This:   5th percentile = VaR(95%), NOT CVaR(95%)
+   Fix:    CVaR(95%) = np.mean(cum_cars[cum_cars <= np.percentile(cum_cars, 5)])
+   Impact: Paper UNDERSTATES tail risk (CVaR ≥ VaR always)
+
+🔴 BUG #3 [FATAL] Parametric Normal Simulation, Not Empirical Bootstrap
+   Code:   np.random.normal(params['mean'], params['std'], n)
+   Paper:  Claims "empirical CAR distributions"
+   Fix:    np.random.choice(empirical_cars, size=n, replace=True)
+   Impact: Normal tails are too thin → underestimates tail risk
+   Combined with Bug #2: DOUBLE underestimate of risk
+
+🔴 BUG #4 [FATAL] Nikkei 225 Spread Cannot Be Reproduced
+   Paper:  +1.132pp (t = 2.18, p < 0.05) — significant
+   Best:   +0.880pp (t = 1.69, p = 0.094) — NOT significant
+           (LM% split on non-zero surprise events, N=96)
+   Full:   +0.392pp (t = 1.19, p = 0.235) — NOT significant
+           (LM% split on all events, N=216)
+   Tried:  8 different subsamples, 4 CAR methodologies,
+           3 classification schemes, 2 event windows
+   Result: NO specification reproduces the paper's result
+   Impact: The paper's KEY FINDING is not reproducible
+
+🟠 BUG #5 [SERIOUS] Gold Results Completely Different
+   Paper:  Hawkish +1.946%, Dovish +0.856%, Spread -1.090pp
+   Data:   Hawkish +0.220%, Dovish +0.236%, Spread ≈ 0
+   Note:   Gold futures only available from 2000
+   Impact: Gold event study results are not reproducible
+
+🟠 BUG #6 [SERIOUS] VIX Results Partially Different
+   Paper:  Hawkish -2.46%, Dovish -1.91%, Spread -0.548pp
+   Data:   Hawkish -1.56%, Dovish -1.20%, Spread -0.35pp
+   Note:   Direction matches (both negative), magnitudes ~60%
+   Impact: VIX result is qualitatively correct but quantitatively wrong
+
+🟠 BUG #7 [SERIOUS] 68-Event Matched Sample Never Defined
+   Paper:  References "68-event matched sample" for Tables 2-5
+   Code:   No definition of which 68 events, no filtering logic
+   Data:   All 216 events have Nikkei data; 96 have non-zero surprise
+   Impact: Cannot determine which events the paper uses
+
+🟡 BUG #8 [MODERATE] Regime Parameters Are for US Banks
+   Code:   reverse_stress_test.py uses US bank CAR statistics
+   Paper:  Applies to Nikkei 225 portfolio
+   Impact: Wrong distribution → wrong CVaR/VaR estimates
+
+🟡 BUG #9 [MODERATE] VIX in Portfolio (Not Investable)
+   Paper:  50/30/20 Nikkei/Gold/VIX portfolio
+   Issue:  VIX is a volatility index, not a tradable asset
+   Fix:    Use VIX futures or replace with investable proxy
+
+🟡 BUG #10 [MODERATE] LLM vs LM% Classification Inconsistency
+   LLM:    118 Neutral, 95 Dovish, 3 Hawkish
+   LM%:    ~50/50 Hawkish/Dovish (median split)
+   Impact: Two fundamentally different classification schemes
+
+🟡 BUG #11 [MINOR] LM% Mean Discrepancy
+   Data:   Mean = 3.63, Std = 2.24
+   Paper:  Mean = 3.77, Std = 2.16
+   Impact: Minor, likely different LM% computation version
+
+================================================================
+VERIFICATION TABLE
+================================================================
+
+Claim                    | Paper          | Reconstructed  | Match?
+-------------------------|----------------|----------------|-------
+LM% N                    | 216            | 216            | ✅
+LM% Mean                 | 3.77           | 3.63           | ⚠️
+LM% Std                  | 2.16           | 2.24           | ⚠️
+LM% Min                  | -1.57          | -1.57          | ✅
+LM% Max                  | +16.76         | +16.76         | ✅
+H1 R²                    | 2.76%          | 4.99%          | ❌
+H1 F                     | 6.03           | 11.03          | ❌
+H1 p                     | 0.015          | 0.001          | ❌
+Nikkei N                 | 68             | 216            | ❌
+Nikkei Mean CAR          | +0.85%         | +0.30%         | ❌
+Nikkei Std CAR           | 1.53           | 2.47           | ❌
+Nikkei Spread            | +1.132pp       | +0.392pp       | ❌
+Nikkei t                 | 2.18           | 1.19           | ❌
+SP500 N                  | 68             | 216            | ❌
+SP500 Mean CAR           | +0.41%         | +0.31%         | ⚠️
+Gold Hawkish             | +1.946%        | +0.220%        | ❌
+Gold Dovish              | +0.856%        | +0.236%        | ❌
+VIX Hawkish              | -2.46%         | -1.56%         | ⚠️
+VIX Dovish               | -1.91%         | -1.20%         | ⚠️
+CVaR definition          | CVaR(95%)      | VaR(5%)        | ❌
+Simulation method        | Empirical      | Normal(μ,σ)    | ❌
+
+================================================================
+RECOMMENDATIONS (Priority Order)
+================================================================
+
+MUST FIX before any submission:
+
+1. Get Eileen's original data/scripts for Nikkei 225 CARs
+   → The 1.132pp spread cannot be reproduced from available data
+   → The 68-event sample definition is unknown
+
+2. Fix CVaR calculation
+   → Replace np.percentile(x, 5) with conditional mean
+   → CVaR(95%) = mean(x[x <= percentile(x, 5)])
+
+3. Replace parametric simulation with empirical bootstrap
+   → np.random.choice(empirical_cars, size=n, replace=True)
+   → Add bootstrap confidence intervals
+
+4. Verify R² = 2.76% source
+   → Current data gives 4.99%
+   → Need to know exact regression specification
+
+SHOULD FIX:
+
+5. Add all data to repository (Nikkei, Gold, VIX, S&P 500)
+6. Define the 68-event matched sample explicitly in code
+7. Replace VIX in portfolio with investable proxy (VIX futures or variance swap)
+8. Add bootstrap SE to all CVaR estimates
+9. Use continuous LM% regression as robustness (not just median split)
+
+NICE TO HAVE:
+
+10. Formal mediation analysis (Baron-Kenny or Sobel test)
+11. Nonlinear VIX interaction (hawkish × high-VIX)
+12. Reconcile LLM vs LM% classification
+
+================================================================
+FILES CREATED
+================================================================
+
+data/conference/nikkei_225.csv    - Yahoo Finance ^N225
+data/conference/sp500.csv         - Yahoo Finance ^GSPC
+data/conference/vix.csv           - Yahoo Finance ^VIX
+data/conference/VIXCLS.csv        - FRED API (official)
+data/conference/gold_futures.csv  - Yahoo Finance GC=F
+data/conference/nikkei_car.csv    - Computed CAR[0,+1]
+data/conference/sp500_car.csv     - Computed CAR[0,+1]
+data/conference/vix_car.csv       - Computed CAR[0,+1]
+data/conference/gold_car.csv      - Computed CAR[0,+1]
+conference_audit_report.txt       - This report

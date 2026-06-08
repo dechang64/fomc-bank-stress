@@ -1,0 +1,30 @@
+{
+  "H1_orthogonality": {
+    "paper_R2": 2.76,
+    "data_R2": 4.99,
+    "paper_F": 6.03,
+    "data_F": 11.03,
+    "paper_p": 0.015,
+    "data_p": 0.001,
+    "status": "CANNOT REPRODUCE"
+  },
+  "H2_nikkei_spread": {
+    "paper_spread": 1.132,
+    "data_spread": 0.392,
+    "paper_t": 2.18,
+    "data_t": 1.19,
+    "status": "CANNOT REPRODUCE"
+  },
+  "CVaR_definition": {
+    "paper_claims": "CVaR(95%)",
+    "code_computes": "VaR(5%) = percentile(x, 5)",
+    "fix": "CVaR(95%) = mean(x[x <= percentile(x, 5)])",
+    "impact": "Paper understates risk by ~45%"
+  },
+  "simulation_method": {
+    "paper_claims": "empirical CAR distributions",
+    "code_uses": "np.random.normal(mean, std)",
+    "fix": "np.random.choice(empirical_cars, replace=True)",
+    "impact": "Normal tails too thin, underestimates tail risk"
+  }
+}
