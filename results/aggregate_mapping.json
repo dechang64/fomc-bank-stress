@@ -3,8 +3,8 @@
   "coefficients": {
     "beta_fh_htm": -0.053779319130612534,
     "beta_fh_afs": 0.00029098969152753203,
-    "beta_dov_zlb_nim": -0.0005186116715644539,
-    "beta_dov_zlb_nim_trading": 0.004812067870760921
+    "beta_dov_zlb_nim": -0.00523748978434027,
+    "beta_dov_zlb_nim_trading": 0.0015781301460115723
   },
   "system_characteristics": {
     "total_assets_bn": 18.314288006,
@@ -18,8 +18,8 @@
     "cumulative_12_meetings_pp": -0.8848715713174422
   },
   "scenario_dovish_zlb": {
-    "per_meeting_system_car_pp": 0.00015665771289180623,
-    "cumulative_76_meetings_pp": 0.011905986179777273
+    "per_meeting_system_car_pp": -0.0023194290676149926,
+    "cumulative_76_meetings_pp": -0.17627660913873944
   },
   "svb_counterfactual": {
     "svb_htm_ratio": 0.431,
