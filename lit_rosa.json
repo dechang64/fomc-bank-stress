@@ -1,0 +1,47 @@
+[
+  {
+    "url": "https://www.jstor.org/stable/26757511",
+    "name": "the impact of federal reserve monetary policy announcements  - jstor",
+    "snippet": "Figure 3 highlights the effectiveness of LSAP surprises in explaining changes in asset prices, especially the 10-year Treasury rate, in a narrow window around.",
+    "host_name": "www.jstor.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.newyorkfed.org/medialibrary/media/research/epr/2013/0913rosa.pdf",
+    "name": "[PDF] The Financial Market Effect of FOMC Minutes",
+    "snippet": "The high-frequency reaction of asset prices to news announcements represents a simple and precise tool for assessing how information is impounded into ...",
+    "host_name": "www.newyorkfed.org",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://ideas.repec.org/a/fip/fedlrv/00018.html",
+    "name": "The evolution of Federal Reserve policy and the impact of monetary",
+    "snippet": "This article describes the joint evolution of Federal Reserve policy and the study of the impact of monetary policy surprises on high-frequency asset prices ...",
+    "host_name": "ideas.repec.org",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0140988314001443",
+    "name": "The high-frequency response of energy prices to U.S. monetary policy",
+    "snippet": "Three measures for monetary policy surprises are used: 1) the surprise change to the current federal funds target rate, 2) the surprise component to the future ...",
+    "host_name": "www.sciencedirect.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.frbsf.org/research-and-insights/data-and-indicators/us-monetary-policy-event-study-database",
+    "name": "U.S. Monetary Policy Event-Study Database - San Francisco Fed",
+    "snippet": "High-frequency monetary policy surprises can be constructed from the data in the USMPD in different ways. This page also includes R code for the ...",
+    "host_name": "www.frbsf.org",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  }
+]

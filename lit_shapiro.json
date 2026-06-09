@@ -1,0 +1,47 @@
+[
+  {
+    "url": "https://ideas.repec.org/a/oup/restud/v89y2022i5p2768-2805..html",
+    "name": "Taking the Fed at its Word: A New Approach to Estimating Central",
+    "snippet": "We propose a new approach to estimating central bank preferences, including the implicit inflation target, that requires no priors on the underlying ...",
+    "host_name": "ideas.repec.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.frbsf.org/wp-content/uploads/wp2019-02.pdf",
+    "name": "[PDF] A New Approach to Estimating Central Bank Objectives using Text",
+    "snippet": "Shapiro, Adam Hale, Daniel Wilson. Our approach entails directly estimating the central bank's objective function from the sentiment expressed by policymakers ...\nShapiro, Adam Hale, Daniel Wilson. 2021. “Taking the Fed at its Word: A New. Approach to Estimating Central Bank Objectives using Text Analysis,” Federal ...",
+    "host_name": "www.frbsf.org",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://academic.oup.com/restud/article-abstract/89/5/2768/6484651",
+    "name": "A New Approach to Estimating Central Bank Objectives using Text",
+    "snippet": "Our approach entails directly estimating the central bank's objective function from the sentiment expressed by policymakers in their internal meetings.\nOur approach entails directly estimating the central bank's objective function from the sentiment expressed by policymakers in their internal meetings. We apply ...",
+    "host_name": "academic.oup.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.researchgate.net/publication/357363993_Taking_the_Fed_at_its_Word_A_New_Approach_to_Estimating_Central_Bank_Objectives_using_Text_Analysis",
+    "name": "A New Approach to Estimating Central Bank Objectives using Text",
+    "snippet": "Shapiro and Wilson (2022) , who apply text analysis techniques to estimate the loss function of the Federal Open Market Committee (FOMC). Shapiro and Wilson ( ...\n... In this paper, we depart from the common reaction function-based approach and aim to estimate the central bank loss function directly, following Shapiro and ...",
+    "host_name": "www.researchgate.net",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S104244312600051X",
+    "name": "Information in central bank sentiment: An analysis of Fed and ECB",
+    "snippet": "These findings support (Shapiro and Wilson, 2021) who finds that the Fed cares about stock market returns. This supports the need to identify what central\nThis paper constructs a sentiment measure for published central bank (CB) communications using natural language processing and FinBERT techniques (machine ...",
+    "host_name": "www.sciencedirect.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  }
+]

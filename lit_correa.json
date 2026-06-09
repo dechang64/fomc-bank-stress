@@ -1,0 +1,47 @@
+[
+  {
+    "url": "https://www.federalreserve.gov/econres/notes/ifdp-notes/constructing-a-dictionary-for-financial-stability-20170623.htm",
+    "name": "The Fed - Constructing a Dictionary for Financial Stability",
+    "snippet": "We constructed lists of words conveying positive and negative sentiment--a dictionary--that is calibrated to the language of financial stability reports (FSRs).",
+    "host_name": "www.federalreserve.gov",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://ideas.repec.org/p/fip/fedgif/1203.html",
+    "name": "Sentiment in Central Banks' Financial Stability Reports - IDEAS/RePEc",
+    "snippet": "To do so, we construct a dictionary tailored specifically to a financial stability context, which assigns positive and negative connotations based on the ...",
+    "host_name": "ideas.repec.org",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://revfin.org/sentiment-in-central-banks-financial-stability-reports",
+    "name": "Sentiment in Central Banks' Financial Stability Reports",
+    "snippet": "With this dictionary, we construct financial stability sentiment (FSS) indexes for 30 countries between 2005 and 2017. We find that central banks' financial ...",
+    "host_name": "revfin.org",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://sites.google.com/view/ricardocorrea/datasets",
+    "name": "Datasets",
+    "snippet": "Financial stability dictionary and sentiment index: Financial stability dictionary · Financial stability sentiment index. Reference: Correa, Ricardo & Keshav ...",
+    "host_name": "sites.google.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3091943",
+    "name": "Sentiment in Central Banks' Financial Stability Reports",
+    "snippet": "With this dictionary, we construct financial stability sentiment (FSS) indexes for 30 countries between 2005 and 2017. We find that central ...",
+    "host_name": "papers.ssrn.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  }
+]

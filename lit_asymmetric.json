@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://www.federalreserve.gov/econres/feds/files/2025048pap.pdf",
+    "name": "[PDF] Gauging the Sentiment of Federal Open Market Committee",
+    "snippet": "Prior to recessions, the stance of monetary policy is perceived as hawkish as the FOMC is hiking rates. ... monetary policy, International Journal ...",
+    "host_name": "www.federalreserve.gov",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://cepr.org/voxeu/columns/fed-communication-all-understood-few",
+    "name": "Fed communication for all – but understood by few | CEPR",
+    "snippet": "Central banks use communication to influence inflation expectations, with varying effectiveness. This column examines how professional ...",
+    "host_name": "cepr.org",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.elibrary.imf.org/view/journals/001/2025/109/article-A001-en.xml",
+    "name": "From Text to Quantified Insights – A Large-Scale LLM Analysis of",
+    "snippet": "Our sentiment analysis reveals asymmetries in communication, with accommodative policies often accompanied by extensive dovish messaging, ...",
+    "host_name": "www.elibrary.imf.org",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.bankofengland.co.uk/-/media/boe/files/events/2021/november/advanced-analytics-conference/tho-pham-paper--the-voice-of-monetary-policy.pdf",
+    "name": "[PDF] THE VOICE OF MONETARY POLICY - Bank of England",
+    "snippet": "For example, employing the high-frequency event study approach,. Rosa (2011b) shows that surprise hawkish FOMC statements lead to a reduction in equity returns.",
+    "host_name": "www.bankofengland.co.uk",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.bde.es/f/webbe/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosTrabajo/25/Files/dt2505e.pdf",
+    "name": "[PDF] perceiving central bank communications through press coverage",
+    "snippet": "We present evidence suggesting that a simple measure of central bank communication tone, as perceived and interpreted by the media, correlates with the ...",
+    "host_name": "www.bde.es",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.kansascityfed.org/research/research-working-papers/text-sentiment-about-monetary-policy",
+    "name": "Text Sentiment About Monetary Policy",
+    "snippet": "Text-based analysis of FOMC meeting transcripts can help identify the evolution of members' perceptions of economic conditions.",
+    "host_name": "www.kansascityfed.org",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.frbsf.org/research-and-insights/publications/economic-letter/2026/03/fed-communications-and-inflation-expectations",
+    "name": "Fed Communications and Inflation Expectations",
+    "snippet": "Event-study analysis provides new market-based evidence of monetary policy transmission: Hawkish policy surprises lower market-based inflation ...",
+    "host_name": "www.frbsf.org",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.nber.org/system/files/working_papers/w28592/w28592.pdf",
+    "name": "[PDF] The Voice of Monetary Policy - National Bureau of Economic Research",
+    "snippet": "... hawkish FOMC statements lead to a reduction in equity ... “Central Bank. Communication and Monetary Policy: A Survey of Theory and Evidence.",
+    "host_name": "www.nber.org",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://rubenfernandezfuertes.com/papers/2025/2025__fernandez-fuertes__jmp.pdf",
+    "name": "[PDF] Monetary Policy Shocks: A New Hope - Rubén Fernández-Fuertes",
+    "snippet": "The multi-agent LLM framework processes the Federal Reserve's public communication time- line to form probabilistic expectations before each FOMC decision.",
+    "host_name": "rubenfernandezfuertes.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://repositorio-aberto.up.pt/bitstream/10216/150735/2/633128.pdf",
+    "name": "[PDF] THE UNEXPECTED SENTIMENT IN FOMC MEETINGS AND ITS",
+    "snippet": "The first group analyses sentiment in central bank communication to estimate implicit inflation targets or the monetary policy emphasis in different periods.",
+    "host_name": "repositorio-aberto.up.pt",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "url": "https://sraf.nd.edu/loughranmcdonald-master-dictionary",
+    "name": "Loughran-McDonald Master Dictionary w/ Sentiment Word Lists",
+    "snippet": "The dictionary/sentiment lists are free for use in academic research. For commercial licenses, please contact us at loughranmcdonald@gmail.com.\nThe dictionary/sentiment lists are free for use in academic research. The sentiment categories are: negative, positive, uncertainty, litigious, strong modal, ...",
+    "host_name": "sraf.nd.edu",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://emilhvitfeldt.github.io/textdata/reference/lexicon_loughran.html",
+    "name": "Loughran-McDonald sentiment lexicon — lexicon_loughran • textdata",
+    "snippet": "This lexicon labels words with six possible sentiments important in financial contexts: \"negative\", \"positive\", \"litigious\", \"uncertainty\", \"constraining\", or ...",
+    "host_name": "emilhvitfeldt.github.io",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://link.springer.com/article/10.1007/s11135-024-01896-9",
+    "name": "Dictionary-based sentiment analysis of monetary policy",
+    "snippet": "In this study, we discuss central bank communication sentiments assessed using different dictionaries. Policy communication by monetary ...",
+    "host_name": "link.springer.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0304405X22002422",
+    "name": "The colour of finance words - ScienceDirect.com",
+    "snippet": "Our paper relies on stock price reactions to colour words, in order to provide new dictionaries of positive and negative words in a finance context.",
+    "host_name": "www.sciencedirect.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://wseas.com/journals/fe/2024/a30fe-017(2024).pdf",
+    "name": "Financial report sentiment analysis using Loughran-McDonald",
+    "snippet": "The goal is to enhance the accuracy and depth of sentiment analysis in financial reports.To begin, we employ the specialized Loughran-McDonald dictionary ...",
+    "host_name": "wseas.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  }
+]
