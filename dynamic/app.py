@@ -66,6 +66,7 @@ st.sidebar.caption("Based on Zhang (2026)")
 
 page = st.sidebar.radio("Navigate", [
     "🏠 Dashboard",
+    "💬 Sentiment Analysis",
     "📊 Regime Detector",
     "⚡ Scenario Generator",
     "💰 HTM Risk Module",
@@ -96,26 +97,122 @@ if page == "🏠 Dashboard":
     st.markdown("### Key Findings")
 
     findings = pd.DataFrame({
-        "Hypothesis": ["H1: Full Sample", "H2: Regime Shift", "H6: Japan",
-                        "H8: NIM Channel", "H9: HTM Channel"],
+        "Channel": ["Implementation", "Forward Guidance", "LM% Placebo",
+                     "ZLB Structural Break", "OOS Prediction"],
         "Finding": [
-            "Dovish = lower bank returns (−0.89pp)",
-            "Pre-DFAST >> DFAST era (22× ratio)",
-            "Japan 57% stronger than US",
-            "ZLB compensation: Dovish×ZLB×NIM = +0.68",
-            "FastHike devastation: t = −8.16",
+            "target×direction: language amplifies hawkish signals (t = 3.73)",
+            "path×direction: path shocks matter during rate cuts (t = −2.93)",
+            "LM% misses both channels (t = −1.05, −0.98); opposite sign",
+            "Chow test F = 14.12, p < 0.001: ZLB-specific",
+            "Direction model is only spec with DM p = 0.029",
         ],
-        "t-stat": ["−2.13**", "22×", "−1.40 vs −0.89", "+0.68***", "−8.16***"],
+        "Key stat": ["t = 3.73***", "t = −2.93***", "R² = 0.020 vs 0.182", "F = 14.12***", "DM p = 0.029**"],
     })
     st.dataframe(findings, use_container_width=True, hide_index=True)
 
-    st.markdown("### Regime-Conditional Signal Map")
+    st.markdown("### Regime-Dependent Sentiment Response")
     st.markdown("""
-    | Regime | Dovish Signal | Hawkish Signal |
-    |--------|--------------|----------------|
-    | **ZLB** | 🟢 Liquidity (+0.18pp) | 🔴 Distress (−1.00pp) |
-    | **Normalization** | 🔴 Distress (−0.82pp) | 🟢 Accommodation (+0.30pp) |
-    | **FastHike** | ⚠️ Mixed | 🔴 HTM devastation (−0.093/ratio) |
+    | Regime | Target Shock Effect | Path Shock Effect | Economic Magnitude |
+    |--------|--------------------|--------------------|---------------------|
+    | **Rate Hike** | +0.015/σ (t = 4.72) | −0.003/σ (negligible) | 12.5 net hawkish words → −8.7bp DXY |
+    | **Rate Hold** | +0.003/σ (baseline) | +0.003/σ (baseline) | Baseline |
+    | **Rate Cut** | −0.006/σ (attenuated) | +0.007/σ (FG channel) | −5.2 net hawkish words → +3.7bp DXY |
+    """)
+
+# ── Sentiment Analysis ──
+elif page == "💬 Sentiment Analysis":
+    st.title("💬 Sentiment Analysis")
+    st.markdown("**Regime-Dependent Asymmetry in FOMC Statement Sentiment**")
+    st.markdown("*Words Beyond the Rate v15.1 — Direction-Interaction Model*")
+    st.markdown("---")
+
+    st.markdown("### Model Specification")
+    st.markdown("""
+    **CB = α + β₁·target + β₂·path + β₃·direction + β₄·target×direction + β₅·path×direction + ε**
+
+    where direction = +1 (hike), 0 (hold), −1 (cut).
+    """)
+    st.markdown("- **target×direction** (Implementation Channel): Language amplifies hawkish signals during rate hikes")
+    st.markdown("- **path×direction** (Forward Guidance Channel): Path shocks affect language during rate cuts, when FG substitutes for rate changes")
+
+    st.markdown("---")
+    st.markdown("### Main Results (ZLB+Post, N = 109)")
+
+    results = pd.DataFrame({
+        "Variable": ["target", "path", "direction", "target×direction", "path×direction"],
+        "Coefficient": ["0.003", "0.003", "−0.003", "0.012", "−0.006"],
+        "HAC t-stat": ["1.14", "0.67", "−0.38", "3.73***", "−2.93***"],
+        "Wild bootstrap p": ["—", "—", "—", "0.033", "0.010"],
+        "Permutation p": ["—", "—", "—", "<0.001", "0.016"],
+    })
+    st.dataframe(results, use_container_width=True, hide_index=True)
+    st.caption("HAC(4) standard errors. ***, **, * denote 1%, 5%, 10% significance.")
+
+    st.markdown("---")
+    st.markdown("### Model Comparison (Davidson-MacKinnon J-test)")
+
+    comparison = pd.DataFrame({
+        "Model": ["M1: Linear", "M2: Quadratic", "M3: D_hawk interact", "M4: Direction interact", "M5: Piecewise"],
+        "R²": [0.027, 0.072, 0.138, 0.182, 0.138],
+        "Adj R²": [0.008, 0.046, 0.113, 0.142, 0.113],
+        "Wild bootstrap p": ["—", "0.076", "0.010", "0.033 / 0.010", "—"],
+        "OOS DM p": ["—", "0.520", "0.055", "0.029", "0.055"],
+        "Passes all?": ["—", "❌", "Marginal", "✅", "Marginal"],
+    })
+    st.dataframe(comparison, use_container_width=True, hide_index=True)
+    st.caption("M4 encompasses M3: J-test ŷ(M4)→M3 t=3.45, p=0.001; reverse t=0.28, p=0.776")
+
+    st.markdown("---")
+    st.markdown("### Progressive Controls")
+
+    controls = pd.DataFrame({
+        "Specification": ["(1) Baseline", "(2) + FF surprise", "(3) + LM% control",
+                          "(4) + Total words", "(5) + All controls"],
+        "target×dir t": [3.73, 3.83, 3.75, 2.85, 2.83],
+        "path×dir t": [-2.93, -1.85, -2.88, -2.61, -1.91],
+        "R²": [0.182, 0.186, 0.182, 0.545, 0.548],
+    })
+    st.dataframe(controls, use_container_width=True, hide_index=True)
+    st.caption("Both interaction terms survive all controls. Total words absorbs variation but target×dir remains significant.")
+
+    st.markdown("---")
+    st.markdown("### LM% Placebo")
+
+    placebo = pd.DataFrame({
+        "Dependent Variable": ["CB Score V2", "LM% (full dict)"],
+        "target×direction t": [3.73, -1.05],
+        "path×direction t": [-2.93, -0.98],
+        "R²": [0.182, 0.020],
+    })
+    st.dataframe(placebo, use_container_width=True, hide_index=True)
+    st.caption("LM% not only misses both channels—it produces insignificant coefficients with wrong sign. FG channel requires domain-specific dictionary.")
+
+    st.markdown("---")
+    st.markdown("### Economic Significance")
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Hawkish Amplification", "2.4×", "hike vs cut target response")
+    with col2:
+        st.metric("CB Innovation Half-life", "3.2 meetings", "~5 months")
+    with col3:
+        st.metric("DXY Impact (hike)", "−8.7 bp", "per +1σ target shock")
+
+    st.markdown("""
+    | Regime | +1σ Target → ΔCB | Net Hawkish Words | DXY Impact |
+    |--------|-------------------|-------------------|------------|
+    | Rate Hike | +0.014 (72% of σ_CB) | +12.5 words | −8.7 bp |
+    | Rate Cut | −0.006 (30% of σ_CB) | −5.2 words | +3.7 bp |
+    """)
+
+    st.markdown("---")
+    st.markdown("### ZLB Structural Break")
+    st.markdown("""
+    - **Pre-ZLB** (1995-2008, N=55): No regime-dependent sentiment response
+    - **ZLB+Post** (2008-2022, N=109): Both target×direction and path×direction significant
+    - **Chow test**: F = 14.12, p < 0.001
+    - **Interpretation**: Forward guidance makes path shocks relevant for sentiment
+      only in the ZLB era, when the Fed relies on language rather than rate changes.
     """)
 
 # ── Regime Detector ──
@@ -562,5 +659,5 @@ elif page == "📝 FOMC Parser":
 # ── Footer ──
 st.sidebar.markdown("---")
 st.sidebar.markdown("Zhang (2026)")
-st.sidebar.markdown("*FOMC Communication and Bank Stress*")
+st.sidebar.markdown("*Regime-Dependent Asymmetry in FOMC Statement Sentiment*")
 st.sidebar.markdown("[GitHub](https://github.com/dechang64/fomc-bank-stress)")
