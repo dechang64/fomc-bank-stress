@@ -13,8 +13,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-ROOT = r"C:\Users\decha\Desktop\fomc_banks"
-Y9C_PATH = os.path.join(ROOT, "wrds", "raw", "y9c_quarterly.csv")
+ROOT = r"."
+Y9C_PATH = os.path.join(ROOT, "wrds", "raw", "y9c_complete.csv")
 FFIEC_PATH = os.path.join(ROOT, "wrds", "raw", "ffiec_quarterly.csv")
 V62_PANEL = os.path.join(ROOT, "results", "v62_panel.csv")
 H1_BANK = os.path.join(ROOT, "data_proc", "h1_per_bank.json")

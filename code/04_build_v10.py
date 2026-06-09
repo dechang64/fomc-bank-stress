@@ -12,9 +12,9 @@ from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_ALIGN_VERTICAL
 
-OUT_DOCX = r"C:\Users\decha\Desktop\fomc_banks\FOMC_BankStress_v1.0.docx"
-H1 = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\h1_per_bank.json"))
-ERA = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\stress_era_results.json"))
+OUT_DOCX = "paper/FOMC_BankStress_v10.docx"
+H1 = json.load(open("data/h1_per_bank.json"))
+ERA = json.load(open("data/stress_era_results.json"))
 
 # Build doc
 doc = Document()

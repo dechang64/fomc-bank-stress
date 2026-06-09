@@ -11,14 +11,14 @@ from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_ALIGN_VERTICAL
 
-OUT = r"C:\Users\decha\Desktop\fomc_japan\FOMC_BankStress_v63.docx"
-US_H1 = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\h1_per_bank.json"))
-US_ERA = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\stress_era_results.json"))
-JP_RES = json.load(open(r"C:\Users\decha\Desktop\fomc_japan\data_proc\jp_h1_results.json"))
-JP_H1 = json.load(open(r"C:\Users\decha\Desktop\fomc_japan\data_proc\jp_h1.json"))
+OUT = "paper/FOMC_BankStress_v63.docx"
+US_H1 = json.load(open("data/h1_per_bank.json"))
+US_ERA = json.load(open("data/stress_era_results.json"))
+JP_RES = json.load(open("data/jp_h1_results.json"))
+JP_H1 = json.load(open("data/jp_h1.json"))
 
 # Load US v6.2 panel
-PANEL = pd.read_csv(r"C:\Users\decha\Desktop\fomc_banks\results\v62_panel.csv",
+PANEL = pd.read_csv("results/v62_panel.csv",
                      parse_dates=["fomc_date","d0","d1"])
 
 # Compute US Y-9C summaries

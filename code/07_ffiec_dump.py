@@ -277,6 +277,6 @@ print("\n=== FFIEC dump complete ===")
 print("""
 Next steps:
 1. Download ~/wrds_raw/ffiec_quarterly.csv to:
-   C:\\Users\\decha\\Desktop\\fomc_banks\\wrds\\raw\\ffiec_quarterly.csv
+   data\\ffiec_quarterly.csv
 2. Tell assistant 'FFIEC ready'
 """)

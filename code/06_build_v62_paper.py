@@ -13,12 +13,12 @@ from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_ALIGN_VERTICAL
 
-OUT = r"C:\Users\decha\Desktop\fomc_banks\FOMC_BankStress_v62.docx"
-H1 = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\h1_per_bank.json"))
-ERA = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\stress_era_results.json"))
+OUT = "paper/FOMC_BankStress_v62.docx"
+H1 = json.load(open("data/h1_per_bank.json"))
+ERA = json.load(open("data/stress_era_results.json"))
 
 # Load v6.2 panel
-PANEL = pd.read_csv(r"C:\Users\decha\Desktop\fomc_banks\results\v62_panel.csv",
+PANEL = pd.read_csv("results/v62_panel.csv",
                      parse_dates=["fomc_date","d0","d1"])
 
 doc = Document()

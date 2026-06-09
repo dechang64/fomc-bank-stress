@@ -1,2 +1,5 @@
-*.csv
-!README.md
+# Raw price data (large, regeneratable from code/01 and code/09)
+prices_us/
+prices_jp/
+# Keep everything else including CSVs
+

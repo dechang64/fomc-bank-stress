@@ -1,0 +1,207 @@
+# FOMC Bank Stress — Experiment Manifest
+# Each experiment = one paper version or one standalone analysis
+# Track what was tried, what worked, what didn't
+
+experiments:
+  # ── v6.x: Bank stress era analysis ──
+  - id: v62_cross_section
+    version: "6.2"
+    title: "H3 (CRE) + H5 (Capital) cross-sectional analysis"
+    date: 2025-03
+    status: superseded
+    input_data:
+      - data/bank_events.csv
+      - data/y9c_complete.csv
+    output:
+      - results/stress_era_results.json
+    scripts:
+      - code/05_v62_h3_h5.py
+      - code/06_build_v62_paper.py
+    key_finding: "Pre/post-DFAST regime shift in bank return spread"
+
+  - id: v64_us_japan_merge
+    version: "6.4"
+    title: "US + Japan merged analysis"
+    date: 2025-04
+    status: superseded
+    input_data:
+      - data/bank_events.csv
+      - data/jp_bank_events.csv
+      - data/y9c_complete.csv
+    output:
+      - results/jp_h1_results.json
+      - results/jp_h1_by_bank.json
+    scripts:
+      - code/08_v64_merge_h3h5.py
+      - code/12_build_v64_paper.py
+    key_finding: "Regime shift in both US and Japan"
+
+  # ── v10.x: Words Beyond the Rate ──
+  - id: v10_kuttner
+    version: "10.0"
+    title: "Kuttner surprise robustness — rate surprises vs semantic content"
+    date: 2025-05
+    status: superseded
+    input_data:
+      - data/acosta_shocks.xlsx
+      - data/fomc_paper_regression_data.csv
+    output:
+      - results/kuttner_surprise.json
+    scripts:
+      - code/18_kuttner_surprise.py
+    key_finding: "CB spans DXY beyond rate shocks"
+
+  - id: v10_htm_afs
+    version: "10.0"
+    title: "HTM vs AFS quasi-experiment (Plan A)"
+    date: 2025-05
+    status: superseded
+    input_data:
+      - data/y9c_complete.csv
+    output:
+      - results/htm_afs_quasi_experiment.json
+    scripts:
+      - code/13_htm_afs_quasi_experiment.py
+      - code/14_htm_afs_figures.py
+    key_finding: "HTM unrealized loss channel — strongest coefficient (t=-8.16)"
+
+  - id: v10_nim
+    version: "10.0"
+    title: "NIM microfoundation (Plan B)"
+    date: 2025-05
+    status: superseded
+    input_data:
+      - data/y9c_complete.csv
+    output:
+      - results/nim_microfoundation.json
+    scripts:
+      - code/15_nim_microfoundation.py
+    key_finding: "NIM compression channel in ZLB periods"
+
+  - id: v10_aggregate
+    version: "10.0"
+    title: "Cross-sectional → Aggregate mapping (Plan C)"
+    date: 2025-05
+    status: superseded
+    input_data:
+      - data/y9c_complete.csv
+    output:
+      - results/aggregate_mapping.json
+    scripts:
+      - code/16_aggregate_mapping.py
+      - code/17_aggregate_figures.py
+    key_finding: "Aggregate vulnerability index from bank-level exposures"
+
+  - id: v10_4_cb_only
+    version: "10.4"
+    title: "CB-only main table + Rate Cut recovery"
+    date: 2025-06
+    status: superseded
+    input_data:
+      - data/fomc_paper_regression_data.csv
+      - data/cb_dictionary_v2.json
+    key_finding: "CB-only both significant → Wald can't distinguish → regime split"
+
+  # ── v11: LLM frontier ──
+  - id: v11_llm_horse_race
+    version: "11.0"
+    title: "LLM classification horse race"
+    date: 2025-06
+    status: superseded
+    input_data:
+      - data/fomc_statements_all.json
+      - data/llm_fomc_classification_checkpoint.json
+    output:
+      - data/fomc_three_document_llm_analysis.csv
+    scripts:
+      - code/llm_classify_minutes.py
+      - code/llm_classify_transcripts.py
+    key_finding: "81.5% narrative shocks orthogonal to HF shocks"
+
+  # ── v12: Regime analysis ──
+  - id: v12_lm_bias
+    version: "12.0"
+    title: "LM% positivity bias correction + regime analysis"
+    date: 2025-06
+    status: superseded
+    input_data:
+      - data/lm_dictionary.json
+      - data/cb_dictionary_v2.json
+    key_finding: "LM% 95% positive → bias; full LM dictionary corrects"
+
+  - id: v12_5_interaction
+    version: "12.5"
+    title: "Interaction model replaces subsample regression"
+    date: 2025-06
+    status: superseded
+    key_finding: "Solves overfitting from subsample splits"
+
+  - id: v12_9_full_paper
+    version: "12.9"
+    title: "Full top-journal paper (~7900 words)"
+    date: 2025-06
+    status: superseded
+    key_finding: "Post-audit rewrite with target² model"
+
+  # ── v13: Post-audit ──
+  - id: v13_4_quadratic
+    version: "13.4"
+    title: "Post-audit: quadratic model (target²)"
+    date: 2025-06
+    status: superseded
+    input_data:
+      - data/fomc_paper_regression_data.csv
+    key_finding: "target² t=3.43 — asymmetric response to target shocks"
+
+  # ── v14: Interaction model ──
+  - id: v14_0_v10_2_recovery
+    version: "14.0"
+    title: "Integrate v10.2 elements — cross-asset, regime, LLM frontier"
+    date: 2026-06-09
+    status: superseded
+    key_finding: "Cross-asset (5+ assets), rate cut regime, LLM frontier"
+
+  - id: v14_1_interaction
+    version: "14.1"
+    title: "Interaction model (target×D_hawk) — passes wild bootstrap"
+    date: 2026-06-09
+    status: superseded
+    key_finding: "target×D_hawk p=0.010 (wild bootstrap); target² p=0.076 (fails)"
+
+  # ── v15: Direction model (CURRENT BEST) ──
+  - id: v15_0_direction
+    version: "15.0"
+    title: "Direction-interaction model — encompasses all alternatives"
+    date: 2026-06-09
+    status: current
+    input_data:
+      - data/fomc_paper_regression_data.csv
+      - data/acosta_shocks.xlsx
+      - data/cb_dictionary_v2.json
+      - data/lm_dictionary.json
+    key_finding: "J-test: direction model encompasses D_hawk model"
+    notes: |
+      BREAKTHROUGH: Davidson-MacKinnon J-test proves direction model
+      (target×direction + path×direction) ENCOMPASSES D_hawk model.
+
+  - id: v15_1_recovered_experiments
+    version: "15.1"
+    title: "Recover all experiments from repo + add new ones"
+    date: 2026-06-09
+    status: current
+    input_data:
+      - data/fomc_paper_regression_data.csv
+    key_finding: "Direction model after all controls: target×dir t=2.83"
+    recovered_from:
+      - v12.5 (progressive controls)
+      - v12.6 (ZLB structural break)
+      - v12.8 (target² model)
+      - v12.9 (full paper)
+    new_experiments:
+      - "Spanning test: CB predicts DXY beyond target+path (t=-2.16)"
+      - "Calibration: +1σ target during hike → 12.5 net hawkish words → -8.7bp DXY"
+      - "LM% placebo: both interactions insignificant (t=-1.05, -0.98)"
+      - "HAC size distortion: 3.6× for target×dir, 5.6× for path×dir"
+    notes: |
+      10 experiments total. Direction model robust to all controls.
+      HAC over-rejection severe → rely on permutation/bootstrap.

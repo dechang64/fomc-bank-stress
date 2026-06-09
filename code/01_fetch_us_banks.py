@@ -36,7 +36,7 @@ import pandas as pd
 import yfinance as yf
 from datetime import datetime
 
-OUT = r"C:\Users\decha\Desktop\fomc_banks\data_raw"
+OUT = "data"
 os.makedirs(OUT, exist_ok=True)
 
 # Bank tickers

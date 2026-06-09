@@ -19,8 +19,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-EV = r"C:\Users\decha\Desktop\fomc_banks\data_proc\bank_events.csv"
-OUT = r"C:\Users\decha\Desktop\fomc_banks\data_proc"
+EV = "data/bank_events.csv"
+OUT = "data"
 
 ev = pd.read_csv(EV, parse_dates=["fomc_date","d0","d1"])
 
@@ -169,7 +169,7 @@ print(f"  95% CI:       [{ci_lo*100:+.3f}pp, {ci_hi*100:+.3f}pp]")
 print("\n" + "=" * 70)
 print("H2 Per-Bank (Pre-DFAST vs DFAST-era, sorted by full-sample |spread|)")
 print("=" * 70)
-h1 = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\h1_per_bank.json"))
+h1 = json.load(open("data/h1_per_bank.json"))
 top_banks = sorted(h1, key=lambda x: abs(x["spread"]), reverse=True)[:10]
 print(f"  {'Bank':6s} {'Pre-D spread':>12s} {'Pre-D t':>8s} {'DFAST spread':>13s} {'DFAST t':>8s} {'Δ':>8s}")
 h2_per_bank = []

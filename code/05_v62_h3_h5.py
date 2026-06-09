@@ -17,9 +17,9 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-EV = r"C:\Users\decha\Desktop\fomc_banks\data_proc\bank_events.csv"
-Y9C = r"C:\Users\decha\Desktop\fomc_banks\wrds\raw\y9c_quarterly.csv"
-OUT = r"C:\Users\decha\Desktop\fomc_banks\results"
+EV = "data/bank_events.csv"
+Y9C = "data/y9c_complete.csv"
+OUT = "results"
 os.makedirs(OUT, exist_ok=True)
 
 # RSSD9001 -> ticker

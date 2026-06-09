@@ -18,9 +18,9 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-PRICES = r"C:\Users\decha\Desktop\fomc_japan\data_raw\all_jp_banks.csv"
-FOMC   = r"C:\Users\decha\Desktop\fomc_supplementary_extracted\SupplementaryAppendix\data\fomc_statements.csv"
-OUT    = r"C:\Users\decha\Desktop\fomc_japan\data_proc"
+PRICES = "data/all_jp_banks.csv"
+FOMC   = "data/fomc_statements.csv"
+OUT    = "data"
 os.makedirs(OUT, exist_ok=True)
 
 print("=" * 70)

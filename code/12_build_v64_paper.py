@@ -4,16 +4,16 @@
 Build v6.4 paper: v6.3 base (US H1-H5 + Japan H1-H2) + H7 FFIEC extension (N=14->20).
 
 Inputs:
-  C:\\Users\\decha\\Desktop\\fomc_banks\\data_proc\\h1_per_bank.json
-  C:\\Users\\decha\\Desktop\\fomc_banks\\data_proc\\stress_era_results.json
-  C:\\Users\\decha\\Desktop\\fomc_banks\\data_proc\\main_results.json
-  C:\\Users\\decha\\Desktop\\fomc_banks\\data_proc\\v62_panel.csv
-  C:\\Users\\decha\\Desktop\\fomc_banks\\data_proc\\h3h5_v64.json  (from 11_v64_merge_h3h5.py)
-  C:\\Users\\decha\\Desktop\\fomc_japan\\data_proc\\jp_h1_results.json
-  C:\\Users\\decha\\Desktop\\fomc_japan\\data_proc\\jp_h1.json
+  data\\h1_per_bank.json
+  data\\stress_era_results.json
+  data\\main_results.json
+  data\\v62_panel.csv
+  data\\h3h5_v64.json  (from 11_v64_merge_h3h5.py)
+  data\\jp_h1_results.json
+  data\\jp_h1.json
 
 Output:
-  C:\\Users\\decha\\Desktop\\fomc_japan\\FOMC_BankStress_v64.docx
+  paper/FOMC_BankStress_v64.docx
 """
 import os, json
 import numpy as np
@@ -22,14 +22,14 @@ from docx import Document
 from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-OUT = r"C:\Users\decha\Desktop\fomc_japan\FOMC_BankStress_v64.docx"
+OUT = "paper/FOMC_BankStress_v64.docx"
 
 # === Load all data sources ===
 print("=== Loading data ===")
-US_H1 = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\h1_per_bank.json"))
-US_ERA = json.load(open(r"C:\Users\decha\Desktop\fomc_banks\data_proc\stress_era_results.json"))
+US_H1 = json.load(open("data/h1_per_bank.json"))
+US_ERA = json.load(open("data/stress_era_results.json"))
 # US_MAIN may not exist (v6.3 fixed this by reading from stress_era_results.json)
-US_MAIN_PATH = r"C:\Users\decha\Desktop\fomc_banks\data_proc\main_results.json"
+US_MAIN_PATH = "data/main_results.json"
 US_MAIN = None
 if os.path.exists(US_MAIN_PATH):
     US_MAIN = json.load(open(US_MAIN_PATH))
@@ -37,13 +37,13 @@ else:
     # Fallback: try to find bootstrap CI from stress_era_results.json
     # (it was added in some earlier versions but not in current)
     print(f"  Note: {US_MAIN_PATH} not found; bootstrap CI will be omitted")
-JP_RES = json.load(open(r"C:\Users\decha\Desktop\fomc_japan\data_proc\jp_h1_results.json"))
-JP_H1 = json.load(open(r"C:\Users\decha\Desktop\fomc_japan\data_proc\jp_h1.json"))
-PANEL = pd.read_csv(r"C:\Users\decha\Desktop\fomc_banks\results\v62_panel.csv",
+JP_RES = json.load(open("data/jp_h1_results.json"))
+JP_H1 = json.load(open("data/jp_h1.json"))
+PANEL = pd.read_csv("results/v62_panel.csv",
                      parse_dates=["fomc_date","d0","d1"])
 
 # v6.4 H3/H5 results (FFIEC extension)
-H3H5_V64_PATH = r"C:\Users\decha\Desktop\fomc_banks\data_proc\h3h5_v64.json"
+H3H5_V64_PATH = "data/h3h5_v64.json"
 H3H5_V64 = None
 if os.path.exists(H3H5_V64_PATH):
     H3H5_V64 = json.load(open(H3H5_V64_PATH))
