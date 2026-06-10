@@ -123,7 +123,7 @@ if page == "🏠 Dashboard":
 elif page == "💬 Sentiment Analysis":
     st.title("💬 Sentiment Analysis")
     st.markdown("**Regime-Dependent Asymmetry in FOMC Statement Sentiment**")
-    st.markdown("*Words Beyond the Rate v15.1 — Direction-Interaction Model*")
+    st.markdown("*Words Beyond the Rate v15.2 — Regime-Interaction Model*")
     st.markdown("---")
 
     st.markdown("### Model Specification")
@@ -194,7 +194,7 @@ elif page == "💬 Sentiment Analysis":
     with col1:
         st.metric("Hawkish Amplification", "2.4×", "hike vs cut target response")
     with col2:
-        st.metric("CB Innovation Half-life", "3.2 meetings", "~5 months")
+        st.metric("CB Innovation Half-life", "8.6 meetings", "~14 months (AR(2) dominant root)")
     with col3:
         st.metric("DXY Impact (hike)", "−8.7 bp", "per +1σ target shock")
 
@@ -208,11 +208,11 @@ elif page == "💬 Sentiment Analysis":
     st.markdown("---")
     st.markdown("### ZLB Structural Break")
     st.markdown("""
-    - **Pre-ZLB** (1995-2008, N=55): No regime-dependent sentiment response
+    - **Pre-ZLB** (1995-2008, N=55): Weak concave response (opposite curvature); target² negative but insignificant
     - **ZLB+Post** (2008-2022, N=109): Both target×direction and path×direction significant
+    - **2014-2019 clean ZLB** (N=48): Insignificant — asymmetry driven by crisis stress, not ZLB per se
     - **Chow test**: F = 14.12, p < 0.001
-    - **Interpretation**: Forward guidance makes path shocks relevant for sentiment
-      only in the ZLB era, when the Fed relies on language rather than rate changes.
+    - **Interpretation**: Dovish asymmetry arises under crisis communication stress; forward guidance makes path shocks relevant for sentiment only when the Fed relies on language rather than rate changes.
     """)
 
 # ── Regime Detector ──
