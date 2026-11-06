@@ -107,7 +107,7 @@ def run_experiment(exp_dir):
     run_script = Path(exp_dir) / "run.py"
     if run_script.exists():
         print(f"\n▶ Found run.py — executing...")
-        os.system(f"python3 {run_script}")
+        import subprocess; subprocess.run(["python3", str(run_script)], check=False)
     else:
         print(f"\n⚠ No run.py found in {exp_dir}")
         print("  To make this experiment reproducible, create a run.py that:")
