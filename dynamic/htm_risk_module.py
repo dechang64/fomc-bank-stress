@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 HTM Risk Module — Computes unrealized losses on HTM securities.
 Based on H9: FastHike×HTM = −0.093 (t = −8.16).

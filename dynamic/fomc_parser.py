@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 FOMC Statement Parser — Real-time LM% extraction from FOMC statements.
 Uses Loughran-McDonald dictionary to compute positive word percentage.

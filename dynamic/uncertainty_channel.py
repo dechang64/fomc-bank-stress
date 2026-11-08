@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Uncertainty Channel — Delta disagreement as a systemic risk amplifier.
 Based on Zhang (2026) + Inner Confidence framework (Chen et al. 2025, NBER #34965).

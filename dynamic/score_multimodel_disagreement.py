@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Multi-Model Disagreement Scorer — The REAL Delta technique.
 Uses 3+ LLMs to classify FOMC statements and measures their disagreement.
