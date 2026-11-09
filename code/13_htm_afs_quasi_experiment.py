@@ -473,7 +473,7 @@ try:
         'delta': float(res1c.params['fh_x_htm'] - res1c.params['fh_x_afs']),
         'r2_within': float(res1c.rsquared_within),
     }
-except:
+except Exception:
     pass
 
 # Spec 2: Bank + Time FE
@@ -532,7 +532,7 @@ try:
         'delta': float(res4.params['plac_x_htm'] - res4.params['plac_x_afs']),
         'pass': bool(abs(t_diff) < 1.96),
     }
-except:
+except Exception:
     pass
 
 # Spec 7: SVB
@@ -544,7 +544,7 @@ try:
         'excess_impact_pp': float(svb_predicted_impact - avg_predicted_impact),
         'svb_htm_multiple': float(svb_htm_ratio / panel['htm_ratio'].mean()),
     }
-except:
+except Exception:
     pass
 
 # Spec 8: Accounting opacity
@@ -554,7 +554,7 @@ try:
         't_fh_opacity': float(res8.params['fh_x_opacity'] / res8.std_errors['fh_x_opacity']),
         'r2_within': float(res8.rsquared_within),
     }
-except:
+except Exception:
     pass
 
 with open('results/htm_afs_quasi_experiment.json', 'w') as f:
@@ -592,7 +592,7 @@ This within-bank identification rules out alternative explanations based on
 security-level fundamentals (duration, credit risk, etc.), since both HTM
 and AFS portfolios are exposed to the same interest rate shocks.
 """)
-except:
+except Exception:
     print("Summary unavailable due to estimation errors.")
 
 print("DONE.")

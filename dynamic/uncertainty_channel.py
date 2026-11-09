@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 """
 Uncertainty Channel — Delta disagreement as a systemic risk amplifier.
 Based on Zhang (2026) + Inner Confidence framework (Chen et al. 2025, NBER #34965).
@@ -314,8 +315,10 @@ class UncertaintyChannel:
         prev_conf = None
 
         for event in fomc_events:
+            # Accept both "date" and "fomc_date" keys for flexibility
+            fomc_date = event.get("date") or event.get("fomc_date")
             assessment = self.assess(
-                fomc_date=event["date"],
+                fomc_date=fomc_date,
                 stance=event["stance"],
                 inner_confidence=event["inner_confidence"],
                 car_point_estimate=event.get("car_point_estimate", 0.0),

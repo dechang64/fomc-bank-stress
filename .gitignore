@@ -4,3 +4,7 @@ __pycache__/
 *.tmp
 paper/*.tmp
 paper/__pycache__/
+
+# Python
+.env
+.venv/

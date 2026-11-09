@@ -6,7 +6,7 @@ import yaml
 import numpy as np
 from dataclasses import dataclass, field
 from typing import Optional
-from regime_detector import RegimeDetector, Regime
+from .regime_detector import RegimeDetector, Regime
 
 import os
 

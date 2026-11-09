@@ -94,7 +94,7 @@ def classify_transcript(date, text):
                         import math
                         avg_prob = math.exp(sum(probs) / len(probs))
                         inner_conf = avg_prob
-            except:
+            except Exception:
                 pass
         
         return {

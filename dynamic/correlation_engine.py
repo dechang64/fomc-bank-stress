@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 """
 Dynamic Correlation Engine — Regime-conditional bank inter-correlation.
 Based on: ZLB FOMC ρ=0.86 vs Non-ZLB FOMC ρ=0.68.

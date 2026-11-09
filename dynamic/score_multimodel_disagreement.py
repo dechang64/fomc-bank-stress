@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 """
 Multi-Model Disagreement Scorer — The REAL Delta technique.
 Uses 3+ LLMs to classify FOMC statements and measures their disagreement.
@@ -31,7 +32,7 @@ import pandas as pd
 from pathlib import Path
 from openai import OpenAI
 from collections import Counter
-from score_fomc_inner_confidence import clean_statement
+from .score_fomc_inner_confidence import clean_statement
 
 # ── Config ──
 DASHSCOPE_API_KEY = os.environ.get("DASHSCOPE_API_KEY", "")
@@ -93,7 +94,7 @@ def classify_with_model(client: OpenAI, model: str, statement: str, date: str) -
                 try:
                     conf_str = line.split("Confidence:")[1].strip().replace("%", "")
                     confidence = float(conf_str) / 100.0
-                except:
+                except Exception:
                     pass
                 break
 

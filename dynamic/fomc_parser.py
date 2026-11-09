@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 """
 FOMC Statement Parser — Real-time LM% extraction from FOMC statements.
 Uses Loughran-McDonald dictionary to compute positive word percentage.
@@ -100,10 +101,12 @@ class FOMCParser:
         dovish_count = sum(1 for w in words if w in DOVISH_WORDS)
 
         # Stance classification
+        # High lm_pct (positive sentiment words) → Hawkish (economy strong, Fed can tighten)
+        # Low lm_pct → Dovish (economy weak, Fed should ease)
         if lm_pct > self.DOVISH_THRESHOLD:
-            stance = "Dovish"
-        elif lm_pct < self.HAWKISH_THRESHOLD:
             stance = "Hawkish"
+        elif lm_pct < self.HAWKISH_THRESHOLD:
+            stance = "Dovish"
         else:
             stance = "Neutral"
 
